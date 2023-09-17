@@ -1,24 +1,24 @@
-import { connectToDB } from "@/utils/database";
+import connectToDB from "@/utils/database";
 import User from "@/models/user";
+import { NextResponse } from "next/server";
 
 export const GET = async (req) => {
-    // const reqParsed = await req.json();
-    // console.log(reqParsed)
-    // const id = 1234;
-    // console.log(`Get user ${id} req`)
+    console.log(`GET /api/users`)
     try {
+        const url = new URL(req.url)
+        const username = url.searchParams.get("username")
+        console.log(`GET /api/users >> username: ${username}`)
         await connectToDB();
-        const id = '6505b8feea4bbdded417392b';
-        const user = await User.findById(id);
-        if (!user) return new Response(`User not found`).status(400);  
-        return new Response(JSON.stringify(user), {status:200});
+        const user = await User.findOne({ username: username });
+        return NextResponse.json({ data: user, error: null }, { status: 200 });
     } catch (e) {
         console.log(e);
-        return new Response(`Server error.`).status(500);
+        return NextResponse.json({ data: null, error: 'Internal server error!' }, { status: 500 });
     }
 }
 
 export const POST = async (req) => {
+    console.log(`POST /api/users`)
     try {
         const reqData = await req.json();
         await connectToDB();

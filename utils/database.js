@@ -2,12 +2,12 @@ import mongoose from "mongoose";
  
 let isConnected = false;
 
-export const connectToDB = async() => {
+const connectToDB = async() => {
     mongoose.set('strictQuery', true);
     if (isConnected) return;
     try {
         await mongoose.connect(process.env.MONGODB_URI, {
-            dbName: "suma_mvp",
+            dbName: "suma_users",
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
@@ -16,3 +16,5 @@ export const connectToDB = async() => {
         console.log(error);
     }     
 }
+
+export default connectToDB;
