@@ -1,24 +1,17 @@
 'use client'
 
-import Link from 'next/link';
-import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
+import LoginForm from '@/components/loginForm';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/dist/server/api-utils';
+import { authOptions } from './api/auth/[...nextauth]/route';
+
 
 const Home = () => {
-  const { data: session } = useSession();
   return (
-    <>
-      {session?.user ? 
-        (<></>)
-        :
-        ( <h2>Signin to SUMA to view the exciting features!</h2> )
-      }
-    </>
+    <div className='flex bg-blue-300'>
+      <LoginForm/>
+    </div>
   )
 }
 
 export default Home
-
-{/* <>
-      <h2>Welcome to the SUMA platform!</h2>
-      <h3>Log in to view the features!</h3>
-    </> */}
