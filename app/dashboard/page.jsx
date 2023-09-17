@@ -2,10 +2,11 @@
 
 import { useSession } from 'next-auth/react'
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
 const Dashboard = () => {
   const { data: session } = useSession();
-  // console.log(session);
+  if (!session) redirect('/login')
   return (
     <>
       <div className="flex flex-col bg-blue-400">Dashboard Section</div>

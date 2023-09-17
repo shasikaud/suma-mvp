@@ -8,8 +8,14 @@ import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
 
 const NavigationBar = () => {
     const { data: session } = useSession();
-    if (session) return <h1>Navigation Bar</h1>
-    return <></>
+    if (!session) return <></>
+    return (
+        <div className='flex flex-row bg-blue-200 gap-4 p-4'>
+            <Link href='/dashboard'>Dashboard</Link>
+            <Link href='/calculator'>Calculator</Link>
+            <button onClick={()=>signOut()} className='bg-red-300'>Sign Out</button>
+        </div>
+    )
 }
 
 export default NavigationBar

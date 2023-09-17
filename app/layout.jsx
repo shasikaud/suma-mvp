@@ -1,3 +1,4 @@
+import NavigationBar from '@/components/Navigation';
 import '@/styles/global.css';
 import { AuthProvider } from '@/utils/providers';
 
@@ -11,7 +12,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body suppressHydrationWarning={true}>
           <AuthProvider>
-            {children}
+            <NavigationBar/>
+              {children}
           </AuthProvider>
       </body>
     </html>

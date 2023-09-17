@@ -1,15 +1,18 @@
 'use client'
 
 import CompanyOverview from '@/components/calculator/companyOverview';
-import Link from 'next/link';
 import { useSession } from 'next-auth/react'
 import { useState, useEffect } from 'react';
 import Start from '@/components/calculator/start';
 import { getUserById, updateUserData as updateUserDataDB } from '@/utils/apiCalls';
 import Offices from '@/components/calculator/offices';
 import IT from '@/components/calculator/IT';
+import { redirect } from 'next/navigation';
 
 const Calculator = () => {
+  const { data: session } = useSession();
+  if (!session) redirect('/login')
+
   const [user, setUser] = useState({});
   const currentState = user?.data?.state;
 

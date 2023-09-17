@@ -3,6 +3,7 @@
 import { getUserByUserName, registerUser } from "@/utils/apiCalls"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
 
 const RegisterForm = () => {
 
@@ -57,6 +58,7 @@ const RegisterForm = () => {
             />
             <button type="submit" onClick={submitForm}>Register</button>
           </form>
+          <h1>Already have an account? <span> <Link href='/login'>Login</Link></span></h1>
         </div>
       )
 }
