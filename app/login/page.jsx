@@ -29,7 +29,8 @@ const LoginForm = () => {
         const res = await signIn("credentials", {
             username: formData.username, 
             password: formData.password,
-            redirect:false
+            redirect:false,
+            fallback:'/dashboard'
         })
 
         if (res.error) {
@@ -37,7 +38,6 @@ const LoginForm = () => {
             alert('Invalid username or password!');
             return; 
         }
-        redirect('/');
         } catch (e) {
             console.log(`Sign in failed: ${e}`)
         }

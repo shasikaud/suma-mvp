@@ -22,11 +22,17 @@ export const POST = async (req) => {
     try {
         const reqData = await req.json();
         await connectToDB();
-        const filter = { id: reqData._id.toString() };
-        const update = {
-            data: reqData.data
-        };
-        await User.findOneAndUpdate(filter, update)
+        const user = await User.findById(reqData._id.toString());
+        user.data = reqData.data;
+        await User.bulkSave([user]);
+        // const filter = { id: reqData._id.toString() };
+        // const update = {
+        //     data: reqData.data
+        // };
+        // console.log(`filter: ${filter.id}`)
+        // console.log(`update: ${update.data}`)
+        // // await User.findOneAndUpdate(filter, update)
+        // await User.updateOne(reqData);
         return new Response({status:200});
     } catch (e) {
         console.log(e);

@@ -14,6 +14,7 @@ const NavigationBar = () => {
             <Link href='/dashboard'>Dashboard</Link>
             <Link href='/calculator'>Calculator</Link>
             <button onClick={()=>signOut()} className='bg-red-300'>Sign Out</button>
+            <h1>Hello, {session?.user?.username}</h1>
         </div>
     )
 }

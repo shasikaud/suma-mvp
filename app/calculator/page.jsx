@@ -32,14 +32,14 @@ const Calculator = () => {
   }
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-col">
       <div className="bg-blue-400">Calculator Section</div>
-      {(currentState === 'STARTED') ? <Start updateUserData={updateUserData}/> : 
+      {(currentState === 'CREATED') ? <Start updateUserData={updateUserData}/> : 
         (
           <ul className='flex flex-col bg-blue-500'>
-            <li>1. Company Overview</li>
-            <li>2. Offices</li>
-            <li>3. Cloud Services & IT</li>
+            <li className={currentState === 'COMPANY_OVERVIEW' ? "bg-green-100" : "bg-red-100"}>1. Company Overview</li>
+            <li className={currentState === 'OFFICES' ? "bg-green-100" : "bg-red-100"}>2. Offices</li>
+            <li className={currentState === 'IT' ? "bg-green-100" : "bg-red-100"}>3. Cloud Services & IT</li>
           </ul>
         )
       }
