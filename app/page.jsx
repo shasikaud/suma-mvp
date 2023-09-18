@@ -7,6 +7,8 @@ const Home = () => {
   const { data: session } = useSession();
   if (!session) redirect('/login');
   redirect('/dashboard');
+  // console.log(session.user)
+  // return <>Home</>
 }
 
 export default Home

@@ -1,27 +1,25 @@
 'use client'
 
-import CompanyOverview from '@/components/calculator/companyOverview';
-import { useSession } from 'next-auth/react'
 import { useState, useEffect } from 'react';
+import { redirect } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+
+import CompanyOverview from '@/components/calculator/CompanyOverview';
 import Start from '@/components/calculator/start';
-import { getUserById, updateUserData as updateUserDataDB } from '@/utils/apiCalls';
+import { getUserByUserName, updateUserData as updateUserDataDB } from '@/utils/apiCalls';
 import Offices from '@/components/calculator/offices';
 import IT from '@/components/calculator/IT';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/router';
+
 
 const Calculator = () => {
   const { data: session } = useSession();
-  if (!session) redirect('/login')
+  if (!session || !session.user) redirect('/login')
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(session.user);
   const currentState = user?.data?.state;
 
   useEffect(() => {
-    const fetchUserData = async(id) => {
-      const user = await getUserById(id);
-      if (user) setUser(user);
-    }
-    fetchUserData();
   }, []);
 
   const updateUserData = async(key, value) => {

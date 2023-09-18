@@ -8,7 +8,9 @@ export const POST = async (req) => {
         const { username, password } = await req.json();
         await connectToDB();
         const hashedPassword = await bcrypt.hash(password, 10);
-        await User.create({ username, password:hashedPassword });
+        await User.create({ username, password:hashedPassword, data: {
+            state: 'CREATED'
+        } });
         return new Response({status:200});
     } catch (e) {
         console.log(e);
