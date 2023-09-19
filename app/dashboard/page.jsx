@@ -8,13 +8,15 @@ const Dashboard = () => {
   const { data: session } = useSession();
   if (!session) redirect('/login')
   return (
-    <>
-      <div className="flex flex-col bg-blue-400">Dashboard Section</div>
-      <div className="flex flex-col bg-blue-500">
-        <Link href='/calculator' className="flex flex-col bg-red-300">Start Carbon Accounting</Link>
+    <div className="w-full bg-yellow-100">
+      <div>
+        {`Dashboard / ${session?.user?.companyName}`}
       </div>
-    </>
-    
+      <h1>{`Hello ${session?.user?.firstName}! Welcome to the SUMA Platform.`}</h1>
+      <h1>Next Steps</h1>
+      <h2>Complete the carbon footprint calculation for one selected year</h2>
+      <Link href='/calculator' className="bg-red-300 p-1 rounded-md">Start Carbon Accounting</Link>
+    </div> 
   )
 }
 

@@ -12,8 +12,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body suppressHydrationWarning={true}>
           <AuthProvider>
-            <NavigationBar/>
+            <div className='flex flex-row h-screen'>
+              <NavigationBar/>
               {children}
+            </div>
+            
           </AuthProvider>
       </body>
     </html>

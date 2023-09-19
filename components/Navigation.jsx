@@ -10,11 +10,12 @@ const NavigationBar = () => {
     const { data: session } = useSession();
     if (!session) return <></>
     return (
-        <div className='flex flex-row bg-blue-200 gap-4 p-4'>
+        <div className='flex flex-col w-28 h-full space-between text-center bg-orange-200 gap-1 p-1'>
+            <h1>SUMA</h1>
             <Link href='/dashboard'>Dashboard</Link>
             <Link href='/calculator'>Calculator</Link>
+            <h1>{session?.user?.companyName}</h1>
             <button onClick={()=>signOut()} className='bg-red-300'>Sign Out</button>
-            <h1>Hello, {session?.user?.username}</h1>
         </div>
     )
 }

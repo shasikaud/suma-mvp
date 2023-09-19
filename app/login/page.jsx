@@ -49,7 +49,7 @@ const LoginForm = () => {
     }
 
     return (
-        <div className="flex p-4 m-4 bg-blue-100 text-slate-500">
+        <div className="flex h-20 p-4 m-4 bg-blue-100 text-slate-500">
             <form onSubmit={submitForm} className="flex flex-row  justify-center gap-2">
 
                 <input 
