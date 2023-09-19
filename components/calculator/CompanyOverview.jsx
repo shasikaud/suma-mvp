@@ -14,8 +14,8 @@ const CompanyOverview = ({ user, updateUserData }) => {
   ]
 
   return (
-    <>
-      <div className="flex flex-col bg-gray-300">
+    <div className="flex flex-row bg-gray-300">
+      <div className="flex flex-row bg-gray-300">
         <h1>Company Overview</h1>
         <p>The CarbonBOT calculator will use financial data and utilize our own calculation formulas built based on GHG Protocol standards to calculate your business’s carbon footprint. It applies region and industry-level economic data to your operations. Going through the calculation process should take less than an hour depending on what information you have available.</p>
       </div>
@@ -49,7 +49,7 @@ const CompanyOverview = ({ user, updateUserData }) => {
       </div>
 
       <button className="bg-red-100" onClick={e => {updateUserData('state', 'OFFICES')}}>Continue</button>
-    </>
+    </div>
   )
 }
 

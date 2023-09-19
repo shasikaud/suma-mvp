@@ -33,23 +33,24 @@ const Calculator = () => {
   }
 
   return (
-    <div className="flex flex-col">
-      <div className="bg-blue-400">Calculator Section</div>
-      {(currentState === 'CREATED') ? <Start updateUserData={updateUserData}/> : 
+    <div className="flex flex-row w-full">
+      {(currentState === 'CREATED') ? <Start updateUserData={updateUserData}/> : <></>}
+      {(currentState === 'COMPANY_OVERVIEW') ? <CompanyOverview user={user} updateUserData={updateUserData}/> : <></>}
+      {(currentState === 'OFFICES') ? <Offices user={user} updateUserData={updateUserData}/> : <></>}
+      {(currentState === 'IT') ? <IT user={user} updateUserData={updateUserData}/> : <></>}
+      {(currentState === 'COMMUTING') ? <Commuting user={user} updateUserData={updateUserData}/> : <></>}
+
+      {(currentState !== 'CREATED') ? 
         (
-          <ul className='flex flex-col bg-blue-500'>
+          <ul className='flex flex-col w-80 m-2 p-2 bg-slate-50'>
             <li className={currentState === 'COMPANY_OVERVIEW' ? "bg-green-100" : "bg-red-100"}>1. Company Overview</li>
             <li className={currentState === 'OFFICES' ? "bg-green-100" : "bg-red-100"}>2. Offices</li>
             <li className={currentState === 'IT' ? "bg-green-100" : "bg-red-100"}>3. Cloud Services & IT</li>
             <li className={currentState === 'COMMUTING' ? "bg-green-100" : "bg-red-100"}>4. Employee Comuting</li>
           </ul>
         )
+        : <></>
       }
-      
-      {(currentState === 'COMPANY_OVERVIEW') ? <CompanyOverview user={user} updateUserData={updateUserData}/> : <></>}
-      {(currentState === 'OFFICES') ? <Offices user={user} updateUserData={updateUserData}/> : <></>}
-      {(currentState === 'IT') ? <IT user={user} updateUserData={updateUserData}/> : <></>}
-      {(currentState === 'COMMUTING') ? <Commuting user={user} updateUserData={updateUserData}/> : <></>}
 
   </div>
   )
