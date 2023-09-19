@@ -51,7 +51,7 @@ const RegisterForm = () => {
         const data = { [name] : value };
         const updatedFormData = { ...formData, ...data }
         setFormData(updatedFormData);
-        console.log(formData)
+        // console.log(formData)
       }
     
       return (
