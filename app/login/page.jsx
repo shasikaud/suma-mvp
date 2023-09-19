@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { redirect } from "next/navigation";
 
 const LoginForm = () => {
@@ -12,24 +11,22 @@ const LoginForm = () => {
     if (session) redirect('/');
 
     const [formData, setFormData] = useState({
-        username: '',
+        email: '',
         password: ''
     })
 
-    const loginEnabled = formData.username !== '' && formData.password !== ''
-
-    const router = useRouter();
+    const loginEnabled = formData.email !== '' && formData.password !== ''
 
     const submitForm = async(e) => {
         e.preventDefault();
         setFormData({
-        username: '',
-        password: ''
+            email: '',
+            password: ''
         })
 
         try {
         const res = await signIn("credentials", {
-            username: formData.username, 
+            email: formData.email, 
             password: formData.password,
             redirect:false,
             fallback:'/dashboard'
@@ -37,7 +34,7 @@ const LoginForm = () => {
 
         if (res.error) {
             console.log('invalid credentials');
-            alert('Invalid username or password!');
+            alert('Invalid email or password!');
             return; 
         }
         } catch (e) {
@@ -57,8 +54,8 @@ const LoginForm = () => {
 
                 <input 
                     type='text' 
-                    placeholder="Username" 
-                    name="username"
+                    placeholder="Email" 
+                    name="email"
                     value={formData.username}
                     onChange={e => updateForm(e.target.name, e.target.value)}
                 />
