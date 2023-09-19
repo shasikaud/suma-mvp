@@ -10,7 +10,7 @@ const NavigationBar = () => {
     const { data: session } = useSession();
     if (!session) return <></>
     return (
-        <div className='flex flex-col w-28 h-full space-between text-center bg-orange-200 gap-1 p-1'>
+        <div className='flex flex-col w-2/12 h-full space-between text-center bg-orange-200 gap-1 p-1'>
             <h1>SUMA</h1>
             <Link href='/dashboard'>Dashboard</Link>
             <Link href='/calculator'>Calculator</Link>

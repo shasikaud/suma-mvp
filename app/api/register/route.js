@@ -16,6 +16,8 @@ export const POST = async (req) => {
             companyName,
             data: {
                 state: 'CREATED',
+                businessSector: 'Tech consultancy / development for clients',
+                calendarYear: '2022'
             } 
         });
         return new Response({status:200});

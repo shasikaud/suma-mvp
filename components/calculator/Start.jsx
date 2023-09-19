@@ -11,7 +11,7 @@ const Start = ({ updateUserData }) => {
             <li>Cloud service usage</li>
         </ul>
         <button className="bg-red-600" onClick={e => {updateUserData('state', 'COMPANY_OVERVIEW')}}>
-          Start Now
+          Start Now gg
         </button>
     </div>
   )
