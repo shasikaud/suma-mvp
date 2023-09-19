@@ -10,8 +10,8 @@ const Start = ({ updateUserData }) => {
             <li>The company's total annual electricity</li>
             <li>Cloud service usage</li>
         </ul>
-        <button className="bg-red-600" onClick={e => {updateUserData('state', 'COMPANY_OVERVIEW')}}>
-          Start Now
+        <button className="flex w-40 bg-red-600" onClick={e => {updateUserData('state', 'COMPANY_OVERVIEW')}}>
+          Start Now S
         </button>
     </div>
   )
