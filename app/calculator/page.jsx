@@ -10,6 +10,7 @@ import { getUserByUserName, updateUserData as updateUserDataDB } from '@/utils/a
 import Offices from '@/components/calculator/offices';
 import IT from '@/components/calculator/IT';
 import { useRouter } from 'next/router';
+import Commuting from '@/components/calculator/Commuting';
 
 
 const Calculator = () => {
@@ -40,6 +41,7 @@ const Calculator = () => {
             <li className={currentState === 'COMPANY_OVERVIEW' ? "bg-green-100" : "bg-red-100"}>1. Company Overview</li>
             <li className={currentState === 'OFFICES' ? "bg-green-100" : "bg-red-100"}>2. Offices</li>
             <li className={currentState === 'IT' ? "bg-green-100" : "bg-red-100"}>3. Cloud Services & IT</li>
+            <li className={currentState === 'COMMUTING' ? "bg-green-100" : "bg-red-100"}>4. Employee Comuting</li>
           </ul>
         )
       }
@@ -47,6 +49,7 @@ const Calculator = () => {
       {(currentState === 'COMPANY_OVERVIEW') ? <CompanyOverview user={user} updateUserData={updateUserData}/> : <></>}
       {(currentState === 'OFFICES') ? <Offices user={user} updateUserData={updateUserData}/> : <></>}
       {(currentState === 'IT') ? <IT user={user} updateUserData={updateUserData}/> : <></>}
+      {(currentState === 'COMMUTING') ? <Commuting user={user} updateUserData={updateUserData}/> : <></>}
 
   </div>
   )

@@ -6,10 +6,10 @@ export const GET = async (req) => {
     console.log(`GET /api/users`)
     try {
         const url = new URL(req.url)
-        const username = url.searchParams.get("username")
-        console.log(`GET /api/users >> username: ${username}`)
+        const email = url.searchParams.get("email")
+        console.log(`GET /api/users >> email: ${email}`)
         await connectToDB();
-        const user = await User.findOne({ username: username });
+        const user = await User.findOne({ email: email });
         return NextResponse.json({ data: user, error: null }, { status: 200 });
     } catch (e) {
         console.log(e);
@@ -25,14 +25,6 @@ export const POST = async (req) => {
         const user = await User.findById(reqData._id.toString());
         user.data = reqData.data;
         await User.bulkSave([user]);
-        // const filter = { id: reqData._id.toString() };
-        // const update = {
-        //     data: reqData.data
-        // };
-        // console.log(`filter: ${filter.id}`)
-        // console.log(`update: ${update.data}`)
-        // // await User.findOneAndUpdate(filter, update)
-        // await User.updateOne(reqData);
         return new Response({status:200});
     } catch (e) {
         console.log(e);

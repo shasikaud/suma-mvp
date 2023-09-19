@@ -1,7 +1,7 @@
-const getUserByUserName = async(username) => {
-    console.log(`Get user by username: ${username}`)
+const getUserByEmail = async(email) => {
+    console.log(`Get user by email: ${email}`)
     try {
-        const resp = await fetch('/api/users?'+ new URLSearchParams({username:username}));
+        const resp = await fetch('/api/users?'+ new URLSearchParams({email:email}));
         if (resp.status !== 200) return null;
         const parsedBody = await resp.json();
         return parsedBody.data;
@@ -39,4 +39,4 @@ const registerUser = async(data) => {
     }
 }
 
-module.exports = { getUserByUserName, updateUserData, registerUser }
+module.exports = { getUserByEmail, updateUserData, registerUser }

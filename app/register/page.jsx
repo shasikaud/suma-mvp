@@ -1,42 +1,47 @@
 'use client'
 
-import { getUserByUserName, registerUser } from "@/utils/apiCalls"
+import { getUserByEmail, registerUser } from "@/utils/apiCalls"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 
 const RegisterForm = () => {
 
-    const formObj = {
-
-    } 
-
     const [formData, setFormData] = useState({
-        username: '',
-        password: '',
-        repeatPassword: ''
-    })
+      firstName: '',
+      lastName: '',
+      companyName: '',
+      email: '',
+      password: '',
+      repeatPassword: ''
+    } )
 
-    const validEntries = formData.username !== '' && 
+    const validEntries = formData.firstName !== '' && 
+                          formData.lastName !== '' &&
+                          formData.companyName !== '' &&
+                          formData.email !== '' &&
                           formData.password !== '' &&
-                          (formData.password === formData.repeatPassword)
+                          (formData.password === formData.repeatPassword) 
+
+    // console.log(validEntries)
 
     const router = useRouter();
     
     const submitForm = async(e) => {
-        // console.log('submitting')
         e.preventDefault();
-        const user = await getUserByUserName(formData.username);
-        // console.log(`returned user ${user}`);
+        const user = await getUserByEmail(formData.email);
         setFormData({
-          username: '',
-          password: ''
-      })
+          firstName: '',
+          lastName: '',
+          companyName: '',
+          email: '',
+          password: '',
+          repeatPassword: ''
+        })
         if (user) {
-          alert(`User already exists with username ${formData.username}`);
+          alert(`User already exists with email ${formData.email}`);
           return;
         }
-        // console.log('Registering user.')
         const success = await registerUser(formData);
         if (success) router.push('/');
         if (!success) alert(`User registration failed, please retry or contact the team.`)
@@ -46,6 +51,7 @@ const RegisterForm = () => {
         const data = { [name] : value };
         const updatedFormData = { ...formData, ...data }
         setFormData(updatedFormData);
+        console.log(formData)
       }
     
       return (
@@ -64,7 +70,7 @@ const RegisterForm = () => {
                 type='text' 
                 placeholder="Last Name" 
                 name="lastName"
-                value={formData.LastName}
+                value={formData.lastName}
                 onChange={e => updateForm(e.target.name, e.target.value)}
               />
             </div>
@@ -72,8 +78,8 @@ const RegisterForm = () => {
             <input 
               type='email' 
               placeholder="Your email address" 
-              name="username"
-              value={formData.username}
+              name="email"
+              value={formData.email}
               onChange={e => updateForm(e.target.name, e.target.value)}
             />
 

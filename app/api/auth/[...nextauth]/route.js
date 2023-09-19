@@ -11,10 +11,10 @@ export const authOptions = {
             credentials: {}, 
 
             async authorize(credentials) {
-                const { username, password } = credentials;
+                const { email, password } = credentials;
                 try {
                     await connectToDB();
-                    const user = await User.findOne({ username });
+                    const user = await User.findOne({ email });
                     if (!user) return null;
                     const isEqual = await bcrypt.compare(password, user.password);
                     if (isEqual) return user;
@@ -27,7 +27,7 @@ export const authOptions = {
 
             async session({ session }) {
                 const user = await User.findOne({
-                    username: session.user.username
+                    username: session.user.email
                 })
                 return user; 
             },
