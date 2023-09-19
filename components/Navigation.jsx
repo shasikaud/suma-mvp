@@ -6,7 +6,6 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { signOut, useSession } from 'next-auth/react'
 import { usePathname } from 'next/navigation';
-import { MdDashboard } from "react-icons/fa";
 
 const NavigationBar = () => {
 
@@ -21,7 +20,6 @@ const NavigationBar = () => {
             <Link href='/dashboard' className={path==='/dashboard' ? 'bg-slate-200 rounded' : ''}>
                 Dashboard
             </Link>
-            <MdDashboard/>
             <Link href='/calculator' className={path==='/calculator' ? 'bg-slate-200 rounded' : ''}>Calculator</Link>
             <h1 className='mt-72'>{session?.user?.companyName}</h1>
             <button onClick={()=>signOut()} className='bg-red-100 hover:bg-red-400'>Sign Out</button>
