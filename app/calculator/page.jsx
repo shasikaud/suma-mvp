@@ -32,10 +32,13 @@ const Calculator = () => {
     setUser(updatedUser)
   }
 
+  if (currentState === 'CREATED') return <Start updateUserData={updateUserData}/>
+
+
   return (
     <div className="flex flex-row w-full">
+
       <div className='w-9/12'>
-        {(currentState === 'CREATED') ? <Start updateUserData={updateUserData}/> : <></>}
         {(currentState === 'COMPANY_OVERVIEW') ? <CompanyOverview user={user} updateUserData={updateUserData}/> : <></>}
         {(currentState === 'OFFICES') ? <Offices user={user} updateUserData={updateUserData}/> : <></>}
         {(currentState === 'IT') ? <IT user={user} updateUserData={updateUserData}/> : <></>}

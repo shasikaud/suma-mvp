@@ -49,14 +49,17 @@ const LoginForm = () => {
     }
 
     return (
-        <div className="flex h-20 p-4 m-4 bg-blue-100 text-slate-500">
-            <form onSubmit={submitForm} className="flex flex-row  justify-center gap-2">
+        <div className="flex justify-center items-center w-screen bg-orange-100 text-slate-500">
+            <form onSubmit={submitForm} 
+                className="flex flex-col content-center justify-center
+                 w-60 gap-1 border-2 rounder-lg p-4 border-orange-300 rounded-lg">
 
                 <input 
                     type='text' 
                     placeholder="Email" 
                     name="email"
                     value={formData.username}
+                    className="h-8"
                     onChange={e => updateForm(e.target.name, e.target.value)}
                 />
 
@@ -65,6 +68,7 @@ const LoginForm = () => {
                     placeholder="Password" 
                     name="password"
                     value={formData.password}
+                    className="h-8"
                     onChange={e => updateForm(e.target.name, e.target.value)}
                 />
 
@@ -72,12 +76,17 @@ const LoginForm = () => {
                     type="submit" 
                     onClick={submitForm} 
                     disabled={!loginEnabled}
-                    className={loginEnabled ? "border-green-300 bg-green-100 px-2" : "border-slate-50 bg-slate-300 px-2 text-slate-50"}
+                    className={`px-2 h-8 rounded-lg ${loginEnabled ? "border-green-300 bg-green-100 " 
+                    : "border-slate-50 bg-orange-200 px-2 text-slate-50 h-8"}`}
                 >
                     Login
                 </button>
 
-                <Link href='/register' className="border-orange-300 bg-orange-100 px-2">Register</Link>
+                <Link href='/register' 
+                    className="bg-orange-300 h-8 rounded-lg text-slate-50 text-center">
+                    Register
+                </Link>
+
             </form>
         </div>
     )
