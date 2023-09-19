@@ -55,8 +55,8 @@ const RegisterForm = () => {
       }
     
       return (
-        <div className="flex justify-center p-4 bg-blue-100 text-black-200 m-10">
-          <form onSubmit={submitForm} className="flex flex-col gap-2 m-4 p-4">
+        <div className="flex justify-center items-center w-screen bg-slate-50 text-slate-500">
+          <form onSubmit={submitForm} className="flex flex-col gap-2 m-4 p-4 border-2 rounded-lg border-orange-400">
 
             <div className="flex flex-row gap-2">
               <input 
@@ -110,14 +110,15 @@ const RegisterForm = () => {
             <button 
               type="submit" 
               onClick={submitForm} 
-              className={`border-2 rounded-sm ${validEntries ? "border-red-600 bg-red-100" : "bg-slate-300 text-slate-50"}`}
+              className={`border-2 rounded-sm ${validEntries ? "border-orange-400 bg-orange-100 text-orange-400" 
+                : "bg-slate-300 text-slate-50"}`}
               disabled={!validEntries}
             >
               Register
             </button>
 
             <div className="flex justify-center">
-              <h1>Already have an account? <span> <Link href='/login' className="underline">Login</Link></span></h1>
+              <h1>Already have an account? <span> <Link href='/login' className="underline text-orange-400">Login</Link></span></h1>
             </div>
           </form>
 
