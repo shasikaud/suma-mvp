@@ -14,20 +14,22 @@ const CompanyOverview = ({ user, updateUserData }) => {
   ]
 
   return (
-    <div className="bg-gray-300">
+    <div className="bg-slate-100 p-4 h-full">
 
-      <h1>Company Overview</h1>
-      <p>The CarbonBOT calculator will use financial data and utilize our own calculation formulas built based on GHG Protocol standards to calculate your business’s carbon footprint. It applies region and industry-level economic data to your operations. Going through the calculation process should take less than an hour depending on what information you have available.</p>
+      <h1 className="text-2xl">Company Overview</h1>
+      <p className="my-2">Measuring with carbon footprint calculator will use financial data and utilize our own calculation formulas built based on GHG Protocol standards to calculate your business’s carbon footprint. It applies region and industry-level economic data to your operations. Going through the calculation process should take less than an hour depending on what information you have available.</p>
 
-      <div className="flex flex-col bg-gray-400">
-        <h2>Company Name</h2>
-        <h3>Company registered in Finland</h3>
-        <button className="flex flex-col bg-red-400">Change Details</button>
+      <div className="flex flex-row justify-between bg-slate-50 p-4 my-2">
+        <h2 className="font-semibold">{user?.companyName}</h2>
+        {/* <h3>Company registered in Finland</h3> */}
+        <button className="flex flex-col rounded-lg border-2 border-orange-400 p-2 text-orange-400">Change Details</button>
       </div>
 
-      <div className="flex flex-col bg-gray-500">
-        <h2>Business Sector</h2>
-        <select onChange={e => {updateUserData('businessSector', e.target.value)}} value={user?.data?.businessSector}>
+      <div className="flex flex-col bg-slate-50 p-4 gap-2">
+        <h2 className="font-medium">Business Sector</h2>
+        <select onChange={e => {updateUserData('businessSector', e.target.value)}} 
+          className="border-slate-500 border-2"
+          value={user?.data?.businessSector}>
           {
             businessSectors.map((sector, index) => {
               return (<option key={index}>{sector}</option>)
@@ -36,9 +38,9 @@ const CompanyOverview = ({ user, updateUserData }) => {
         </select>
       </div>
 
-      <div className="flex flex-col bg-gray-500">
-        <h2>Select calendar year to measure</h2>
-        <select>
+      <div className="flex flex-col bg-slate-50 p-4 gap-2">
+        <h2 className="font-medium">Select calendar year to measure</h2>
+        <select className="border-slate-500 border-2">
           {
             yearsToMeasure.map((year, index) => {
               return (<option key={index}>{year}</option>)
@@ -47,7 +49,10 @@ const CompanyOverview = ({ user, updateUserData }) => {
         </select>
       </div>
 
-      <button className="bg-red-100" onClick={e => {updateUserData('state', 'OFFICES')}}>Continue</button>
+      <div className="flex flex-row justify-end mt-4">
+        <button className="bg-green-500 text-slate-50 rounded-lg px-4 py-2" onClick={e => {updateUserData('state', 'OFFICES')}}>Continue</button>
+      </div>
+      
     </div>
   )
 }

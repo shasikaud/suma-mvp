@@ -11,6 +11,7 @@ import Offices from '@/components/calculator/offices';
 import IT from '@/components/calculator/IT';
 import { useRouter } from 'next/router';
 import Commuting from '@/components/calculator/Commuting';
+import NavigationCard from '@/components/calculator/utils/NavigationCard';
 
 
 const Calculator = () => {
@@ -36,7 +37,7 @@ const Calculator = () => {
 
 
   return (
-    <div className="flex flex-row w-full">
+    <div className="flex flex-row w-full bg-slate-100">
 
       <div className='w-9/12'>
         {(currentState === 'COMPANY_OVERVIEW') ? <CompanyOverview user={user} updateUserData={updateUserData}/> : <></>}
@@ -45,18 +46,11 @@ const Calculator = () => {
         {(currentState === 'COMMUTING') ? <Commuting user={user} updateUserData={updateUserData}/> : <></>}
       </div>
 
-      <div className='w-3/12'>
-        {(currentState !== 'CREATED') ? 
-          (
-            <ul className='flex flex-col w-80 m-2 p-2 bg-slate-50'>
-              <li className={currentState === 'COMPANY_OVERVIEW' ? "bg-green-100" : "bg-red-100"}>1. Company Overview</li>
-              <li className={currentState === 'OFFICES' ? "bg-green-100" : "bg-red-100"}>2. Offices</li>
-              <li className={currentState === 'IT' ? "bg-green-100" : "bg-red-100"}>3. Cloud Services & IT</li>
-              <li className={currentState === 'COMMUTING' ? "bg-green-100" : "bg-red-100"}>4. Employee Comuting</li>
-            </ul>
-          )
-          : <></>
-        }
+      <div className='flex flex-col w-3/12 mt-4 mx-4 gap-2'>
+        <NavigationCard index={'1'} state={currentState === 'COMPANY_OVERVIEW'} text={'Company Overview'} />
+        <NavigationCard index={'2'} state={currentState === 'OFFICES'} text={'Offices'} />
+        <NavigationCard index={'3'} state={currentState === 'IT'} text={'Cloud Services & IT'} />
+        <NavigationCard index={'4'} state={currentState === 'COMMUTING'} text={'Employee Commuting'} />
       </div>
       
   </div>

@@ -1,6 +1,6 @@
 import User from "@/models/user";
 import connectToDB from "@/utils/database";
-import bcrypt from "bcryptjs"
+import bcrypt from "bcrypt"
 
 export const POST = async (req) => {
     console.log('POST /api/register')
