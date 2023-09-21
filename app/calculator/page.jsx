@@ -21,20 +21,20 @@ const Calculator = () => {
   const { data: session } = useSession();
   if (!session || !session.user) redirect('/login')
 
-  const [user, setUser] = useState(session.user);
+  const [user, setUser] = useState({});
   const currentState = user?.data?.state;
 
-  console.log(`currentState: ${currentState}`);
-  console.log(`userState: ${user?.data?.state}`)
+  // console.log(`currentState: ${currentState}`);
+  // console.log(`userState: ${user?.data?.state}`)
 
   useEffect(() => {
-    // const temp = async(email) => {
-    //   const user = await getUserByEmail(email);
-    //   // console.log(user);
-    //   if (user) setUser(user);
-    // }
-    // temp(user?.email);
-  }, [user]);
+    const temp = async(email) => {
+      const user = await getUserByEmail(email);
+      // console.log(user);
+      if (user) setUser(user);
+    }
+    temp(session?.user?.email);
+  }, []);
 
   const updateUserData = async(key, value) => {
     console.log(`Updating userData ${key} - ${value}.`);
