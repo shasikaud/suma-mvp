@@ -110,8 +110,8 @@ const RegisterForm = () => {
             <button 
               type="submit" 
               onClick={submitForm} 
-              className={`border-2 rounded-sm ${validEntries ? "border-primary bg-primary text-primary" 
-                : "bg-slate-300 text-slate-50"}`}
+              className={`border-2 rounded-sm  text-slate-50 ${validEntries ? "border-primary bg-primary text-primary" 
+                : "bg-slate-300"}`}
               disabled={!validEntries}
             >
               Register
