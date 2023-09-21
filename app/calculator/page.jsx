@@ -6,7 +6,7 @@ import { useSession } from 'next-auth/react';
 
 import CompanyOverview from '@/components/calculator/CompanyOverview';
 import Start from '@/components/calculator/start';
-import { getUserByUserName, updateUserData as updateUserDataDB } from '@/utils/apiCalls';
+import { getUserByEmail, getUserByUserName, updateUserData as updateUserDataDB } from '@/utils/apiCalls';
 import Offices from '@/components/calculator/offices';
 import IT from '@/components/calculator/IT';
 import { useRouter } from 'next/router';
@@ -15,17 +15,29 @@ import NavigationCard from '@/components/calculator/utils/NavigationCard';
 
 
 const Calculator = () => {
+
+  console.log(`rendering calculator comp`)
+
   const { data: session } = useSession();
   if (!session || !session.user) redirect('/login')
 
   const [user, setUser] = useState(session.user);
   const currentState = user?.data?.state;
 
+  console.log(`currentState: ${currentState}`);
+  console.log(`userState: ${user?.data?.state}`)
+
   useEffect(() => {
-  }, []);
+    // const temp = async(email) => {
+    //   const user = await getUserByEmail(email);
+    //   // console.log(user);
+    //   if (user) setUser(user);
+    // }
+    // temp(user?.email);
+  }, [user]);
 
   const updateUserData = async(key, value) => {
-    console.log(`Updating ${key} - ${value}.`);
+    console.log(`Updating userData ${key} - ${value}.`);
     const kv = { [key]: value };
     const data = { ...user.data, ...kv }
     const updatedUser = { ...user, data }
