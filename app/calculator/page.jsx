@@ -42,6 +42,14 @@ const Calculator = () => {
     setUser(updatedUser)
   }
 
+  const updateNavigationState = async(state) => {
+    const kv = { 'state': state };
+    const data = { ...user.data, ...kv }
+    const updatedUser = { ...user, data }
+    // await updateUserDataDB(updatedUser);
+    setUser(updatedUser)
+  }
+
   if (currentState === 'CREATED') return <Start updateUserData={updateUserData}/>
 
 
@@ -61,7 +69,7 @@ const Calculator = () => {
           state={currentState === 'COMPANY_OVERVIEW'} 
           text={'Company Overview'} 
           completed={currentState === 'OFFICES' || currentState === 'IT' || currentState === 'COMMUTING'}
-          updateUserData={updateUserData}
+          updateNavigationState={updateNavigationState}
           id='COMPANY_OVERVIEW'
         />
         <NavigationCard 
@@ -69,7 +77,7 @@ const Calculator = () => {
           state={currentState === 'OFFICES'} 
           text={'Offices'} 
           completed={currentState === 'IT' || currentState === 'COMMUTING'}
-          updateUserData={updateUserData}
+          updateNavigationState={updateNavigationState}
           id='OFFICES'
         />
         <NavigationCard 
@@ -77,7 +85,7 @@ const Calculator = () => {
           state={currentState === 'IT'} 
           text={'Cloud Services'} 
           completed={currentState === 'COMMUTING'}
-          updateUserData={updateUserData}
+          updateNavigationState={updateNavigationState}
           id='IT'
         />
         <NavigationCard 
@@ -85,7 +93,7 @@ const Calculator = () => {
           state={currentState === 'COMMUTING'} 
           text={'Employee Commuting'} 
           completed={currentState === 'NEXT.'}
-          updateUserData={updateUserData}
+          updateNavigationState={updateNavigationState}
           id='COMMUTING'
         />
       </div>
