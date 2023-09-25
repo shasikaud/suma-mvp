@@ -29,6 +29,7 @@ const CompanyOverview = ({ user, updateUserData }) => {
         <h2 className="font-medium">Business Sector</h2>
         <select onChange={e => {updateUserData('businessSector', e.target.value)}} 
           className="border-slate-500 border-2"
+          placeholder="Select your business sector"
           value={user?.data?.businessSector}>
           {
             businessSectors.map((sector, index) => {
@@ -49,9 +50,21 @@ const CompanyOverview = ({ user, updateUserData }) => {
         </select>
       </div>
 
+      <div className="flex flex-col bg-slate-50 p-4 gap-2">
+        <h2 className="font-medium">How many full time equivalent employees does your company have?</h2>
+        <h3>You can calculate part-time employees as: e.g. four 50% positions amounting to 2 full time employees.</h3>
+        <input 
+          name="fullTimeEmployees"
+          onChange={(e)=>{updateUserData('fullTimeEmployees', Number(e.target.value))}}
+        >
+        </input>
+      </div>
+
       <div className="flex flex-row justify-end mt-4">
         <button className="bg-green-500 text-slate-50 rounded-lg px-4 py-2" onClick={e => {updateUserData('state', 'OFFICES')}}>Continue</button>
       </div>
+
+      <button onClick={e => {updateUserData('states.COMPANY_OVERVIEW', 'ACTIVE')}}>Test</button>
       
     </div>
   )

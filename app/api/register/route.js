@@ -16,6 +16,7 @@ export const POST = async (req) => {
             companyName,
             data: {
                 state: 'CREATED',
+                completedStates: [],
                 businessSector: 'Tech consultancy / development for clients',
                 calendarYear: '2022'
             } 

@@ -24,6 +24,9 @@ const Calculator = () => {
   const [user, setUser] = useState({});
   const currentState = user?.data?.state;
 
+  const completedStates = user?.data?.completedStates;
+  const isCompleted = completedStates.includes(currentState);
+
   // console.log(`currentState: ${currentState}`);
   // console.log(`userState: ${user?.data?.state}`)
 
@@ -59,10 +62,30 @@ const Calculator = () => {
       </div>
 
       <div className='flex flex-col w-3/12 mt-4 mx-4 gap-2'>
-        <NavigationCard index={'1'} state={currentState === 'COMPANY_OVERVIEW'} text={'Company Overview'} />
-        <NavigationCard index={'2'} state={currentState === 'OFFICES'} text={'Offices'} />
-        <NavigationCard index={'3'} state={currentState === 'IT'} text={'Cloud Services & IT'} />
-        <NavigationCard index={'4'} state={currentState === 'COMMUTING'} text={'Employee Commuting'} />
+        <NavigationCard 
+          index={'1'} 
+          state={currentState === 'COMPANY_OVERVIEW'} 
+          text={'Company Overview'} 
+          completed={isCompleted}
+        />
+        <NavigationCard 
+          index={'2'} 
+          state={currentState === 'OFFICES'} 
+          text={'Offices'} 
+          completed={isCompleted}
+        />
+        <NavigationCard 
+          index={'3'} 
+          state={currentState === 'IT'} 
+          text={'Cloud Services & IT'} 
+          completed={isCompleted}
+        />
+        <NavigationCard 
+          index={'4'} 
+          state={currentState === 'COMMUTING'} 
+          text={'Employee Commuting'} 
+          completed={isCompleted}
+        />
       </div>
       
   </div>
