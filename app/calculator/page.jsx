@@ -24,12 +24,6 @@ const Calculator = () => {
   const [user, setUser] = useState({});
   const currentState = user?.data?.state;
 
-  const completedStates = user?.data?.completedStates;
-  const isCompleted = completedStates.includes(currentState);
-
-  // console.log(`currentState: ${currentState}`);
-  // console.log(`userState: ${user?.data?.state}`)
-
   useEffect(() => {
     const temp = async(email) => {
       const user = await getUserByEmail(email);
@@ -66,25 +60,33 @@ const Calculator = () => {
           index={'1'} 
           state={currentState === 'COMPANY_OVERVIEW'} 
           text={'Company Overview'} 
-          completed={isCompleted}
+          completed={currentState === 'OFFICES' || currentState === 'IT' || currentState === 'COMMUTING'}
+          updateUserData={updateUserData}
+          id='COMPANY_OVERVIEW'
         />
         <NavigationCard 
           index={'2'} 
           state={currentState === 'OFFICES'} 
           text={'Offices'} 
-          completed={isCompleted}
+          completed={currentState === 'IT' || currentState === 'COMMUTING'}
+          updateUserData={updateUserData}
+          id='OFFICES'
         />
         <NavigationCard 
           index={'3'} 
           state={currentState === 'IT'} 
-          text={'Cloud Services & IT'} 
-          completed={isCompleted}
+          text={'Cloud Services'} 
+          completed={currentState === 'COMMUTING'}
+          updateUserData={updateUserData}
+          id='IT'
         />
         <NavigationCard 
           index={'4'} 
           state={currentState === 'COMMUTING'} 
           text={'Employee Commuting'} 
-          completed={isCompleted}
+          completed={currentState === 'NEXT.'}
+          updateUserData={updateUserData}
+          id='COMMUTING'
         />
       </div>
       
