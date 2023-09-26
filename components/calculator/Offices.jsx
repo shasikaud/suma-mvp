@@ -34,28 +34,29 @@ const Offices = ({ user, updateUserData }) => {
     }
 
     return (
-        <div className="flex flex-col">
-            <div className="bg-purple-100">
-                <h1>Add new office</h1>
+        <div className="flex flex-col ml-[265px] mx-8 py-8">
+            <div className="py-4 px-8">
+                <h1 className="text-2xl mt-10 mb-4">Offices</h1>
+                <h3 className="font-semibold mb-4">Add new office</h3>
                 <form className="flex flex-col">
                     <label>Name</label>
-                    <input  
+                    <input className="border-gray-200 rounded-md border-2 p-2 mb-4" 
                         type="text" 
                         name="name" 
                         value={office.name}
                         onChange={(e) => {updateOffice(e.target.name, e.target.value)}
                     }/>
 
-                    <label>Office Location</label>
-                    <input 
+                    <label className="font-sm">Office Location</label>
+                    <input className="border-gray-200 rounded-md border-2 p-2 mb-4" 
                         type="text" 
                         name="officeLocation" 
                         value={office.officeLocation}
                         onChange={(e) => {updateOffice(e.target.name, e.target.value)}
                     }/>
 
-                    <label>Employee Count</label>
-                    <input 
+                    <label className="font-sm">Employee Count</label>
+                    <input className="border-gray-200 rounded-md border-2 p-2 mb-4" 
                         type="number" 
                         name="employeeCount" 
                         value={office.employeeCount}
@@ -77,8 +78,9 @@ const Offices = ({ user, updateUserData }) => {
                     )
                 })}
             </div>
-
-            <button className="bg-red-100" onClick={e => {updateUserData('state', 'IT')}}>Continue</button>
+            <div className="flex flex-row justify-end mt-4">
+                <button className="bg-green-500 text-slate-50 rounded-lg px-4 py-2 transition hover:bg-primaryHover" onClick={e => {updateUserData('state', 'IT')}}>Continue</button>
+            </div>
         </div>
     )
 }

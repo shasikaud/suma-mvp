@@ -2,10 +2,9 @@
 
 const Commuting = ({ user, updateUserData }) => {
   return (
-    <div>
-
+    <div className="ml-[265px] px-8 bg-slate-100 h-full">
         <div className="flex flex-col bg-yellow-200">
-            <h1>Employee Commuting</h1>
+            <h1 className="text-2xl mt-10">Employee Commuting</h1>
 
             <div className="flex flex-row bg-yellow-100">
                 <h1>What percentage of your employees work from home (approximately) </h1>
