@@ -2,15 +2,16 @@
 
 const Commuting = ({ user, updateUserData }) => {
   return (
-    <div className="ml-[265px] px-8 bg-slate-100 h-full">
-        <div className="flex flex-col bg-yellow-200">
-            <h1 className="text-2xl mt-10">Employee Commuting</h1>
+    <div>
+
+        <div className="flex flex-col bg-yellow-200 gap-4">
+            <h1>Employee Commuting</h1>
 
             <div className="flex flex-row bg-yellow-100">
                 <h1>What percentage of your employees work from home (approximately) </h1>
                 <input 
                     type="number" 
-                    // value={user?.data?.laptopCount} 
+                    value={user?.data?.wfhEmployeePerct} 
                     // placeholder={user?.data?.laptopCount}
                     onChange={(e)=>{updateUserData('wfhEmployeePerct', Number(e.target.value))}}>
                 </input>
@@ -20,14 +21,14 @@ const Commuting = ({ user, updateUserData }) => {
                 <h1>Average number of working days per year </h1>
                 <input 
                     type="number" 
-                    // value={user?.data?.laptopCount} 
+                    value={user?.data?.workingDaysAvg} 
                     // placeholder={user?.data?.laptopCount}
                     onChange={(e)=>{updateUserData('workingDaysAvg', Number(e.target.value))}}>
                 </input>
             </div>
         </div>
 
-        <div className="flex flex-col bg-yellow-400">
+        <div className="flex flex-col bg-yellow-400 gap-4 mt-4">
             <h1>Mode of transportation</h1>
             <h2>Percentages used each mode</h2>
 
@@ -35,7 +36,7 @@ const Commuting = ({ user, updateUserData }) => {
                 <h1>Walk, bike or electric scooter %</h1>
                 <input 
                     type="number" 
-                    // value={user?.data?.laptopCount} 
+                    value={user?.data?.walkBikeScooterPerct} 
                     // placeholder={user?.data?.laptopCount}
                     onChange={(e)=>{updateUserData('walkBikeScooterPerct', Number(e.target.value))}}>
                 </input>
@@ -45,7 +46,7 @@ const Commuting = ({ user, updateUserData }) => {
                 <h1>Train % </h1>
                 <input 
                     type="number" 
-                    // value={user?.data?.laptopCount} 
+                    value={user?.data?.trainPerct} 
                     // placeholder={user?.data?.laptopCount}
                     onChange={(e)=>{updateUserData('trainPerct', Number(e.target.value))}}>
                 </input>
@@ -55,7 +56,7 @@ const Commuting = ({ user, updateUserData }) => {
                 <h1>Daily one-way distance between home and work (average) km</h1>
                 <input 
                     type="number" 
-                    // value={user?.data?.laptopCount} 
+                    value={user?.data?.dailyDistanceHomeWorkTrain} 
                     // placeholder={user?.data?.laptopCount}
                     onChange={(e)=>{updateUserData('dailyDistanceHomeWorkTrain', Number(e.target.value))}}>
                 </input>
@@ -65,7 +66,7 @@ const Commuting = ({ user, updateUserData }) => {
                 <h1>Bus % </h1>
                 <input 
                     type="number" 
-                    // value={user?.data?.laptopCount} 
+                    value={user?.data?.busPerct} 
                     // placeholder={user?.data?.laptopCount}
                     onChange={(e)=>{updateUserData('busPerct', Number(e.target.value))}}>
                 </input>
@@ -75,7 +76,7 @@ const Commuting = ({ user, updateUserData }) => {
                 <h1>Daily one-way distance between home and work (average) km</h1>
                 <input 
                     type="number" 
-                    // value={user?.data?.laptopCount} 
+                    value={user?.data?.dailyDistanceHomeWorkBus} 
                     // placeholder={user?.data?.laptopCount}
                     onChange={(e)=>{updateUserData('dailyDistanceHomeWorkBus', Number(e.target.value))}}>
                 </input>
@@ -85,7 +86,7 @@ const Commuting = ({ user, updateUserData }) => {
                 <h1>Personal Car % </h1>
                 <input 
                     type="number" 
-                    // value={user?.data?.laptopCount} 
+                    value={user?.data?.carPerct} 
                     // placeholder={user?.data?.laptopCount}
                     onChange={(e)=>{updateUserData('carPerct', Number(e.target.value))}}>
                 </input>
@@ -95,13 +96,19 @@ const Commuting = ({ user, updateUserData }) => {
                 <h1>Daily one-way distance between home and work (average) km</h1>
                 <input 
                     type="number" 
-                    // value={user?.data?.laptopCount} 
+                    value={user?.data?.dailyDistanceHomeWorkCar} 
                     // placeholder={user?.data?.laptopCount}
                     onChange={(e)=>{updateUserData('dailyDistanceHomeWorkCar', Number(e.target.value))}}>
                 </input>
             </div>
             
         </div>
+
+        <button 
+            className="bg-red-100" 
+            onClick={e => {updateUserData('state', 'BUSINESS_TRAVEL', 'COMMUTING', true)}}>
+            Continue
+        </button>
 
     </div>
   )

@@ -3,57 +3,75 @@
 
 const IT = ({ user, updateUserData }) => {
 
-  const usingCloudServices = user?.data?.usingCloudServices;
-  const usingInHouseServers = user?.data?.usingInHouseServers;
+  const useCloud = user?.data?.useCloud;
+  const btnColorYes = (useCloud === 'NOT-DEFINED') ? '' : (useCloud === 'YES') ? 'bg-primary' : 'bg-secondary'
+  const btnColorNo = (useCloud === 'NOT-DEFINED') ? '' : (useCloud === 'YES') ? 'bg-secondary' : 'bg-primary'
 
   return (
     <div className="flex flex-col bg-blue-100">
 
-      <div className="flex flex-row">
+      <div className="flex flex-col">
         <h1>Do you use cloud services such as AWS, Google Cloud or Microsoft Azure</h1>
-        <button className={usingCloudServices ? "bg-green-500" : "bg-slate-300"} 
-                onClick={()=>{updateUserData('usingCloudServices', true)}}>
-                  Yes
-        </button>
-        <button className={!usingCloudServices ? "bg-green-500" : "bg-slate-300"} 
-                onClick={()=>{updateUserData('usingCloudServices', false)}}>
-                  No
-        </button>
+        <div className="flex flex-row">
+          <button className={btnColorYes} 
+                  onClick={()=>{updateUserData('useCloud', 'YES')}}>
+                    Yes
+          </button>
+          <button className={btnColorNo} 
+                  onClick={()=>{updateUserData('useCloud', 'NO')}}>
+                    No
+          </button>
+        </div>
       </div>
 
-      <div className="flex flex-row">
-        <h1>Do you host any servers in-house?</h1>
-        <button className={usingInHouseServers ? "bg-green-500" : ""} 
-                onClick={()=>{updateUserData('usingInHouseServers', true)}}>
-                  Yes
-        </button>
-        <button className={!usingInHouseServers ? "bg-green-500" : ""} 
-                onClick={()=>{updateUserData('usingInHouseServers', false)}}>
-                  No
-        </button>
-      </div>
+      {(useCloud === 'YES') ? 
+        <div className="bg-yellow-200 flex flex-col gap-4">
 
-      <div className="flex flex-row bg-yellow-200">
-        <h1>How many laptops your company provided in 2022? </h1>
-        <input 
-          type="number" 
-          // value={user?.data?.laptopCount} 
-          // placeholder={user?.data?.laptopCount}
-          onChange={(e)=>{updateUserData('laptopCount', Number(e.target.value))}}>
-        </input>
-      </div>
+          <div className="bg-yellow-100 flex flex-col">
+            <h1>AWS</h1>
+            <h1>AWS Carbon Footprint</h1>
+            <input
+              type="number"
+              name="awsCarbonFootprint"
+              placeholder="Amount in CO2"
+              value={user?.data?.awsFootprint}
+              onChange={(e)=>{updateUserData('awsFootprint', Number(e.target.value))}}
+            ></input>
+          </div>
 
-      <div className="flex flex-row bg-yellow-300">
-        <h1>How many desktop computers your company provided in 2022? </h1>
-        <input type="number" onChange={(e)=>{updateUserData('desktopCount', Number(e.target.value))}}></input>
-      </div>
+          <div className="bg-yellow-100 flex flex-col">
+            <h1>GCP</h1>
+            <h1>GCP Carbon Footprint</h1>
+            <input
+              type="number"
+              name="gcpCarbonFootprint"
+              placeholder="Amount in CO2"
+              value={user?.data?.gcpFootprint}
+              onChange={(e)=>{updateUserData('gcpFootprint', Number(e.target.value))}}
+            ></input>
+          </div>
 
-      <div className="flex flex-row bg-yellow-400">
-        <h1>How many desktop screens/TVs your company provided in 2022? </h1>
-        <input type="number" onChange={(e)=>{updateUserData('screenCount', Number(e.target.value))}}></input>
-      </div>
+          <div className="bg-yellow-100 flex flex-col">
+            <h1>Azure</h1>
+            <h1>Azure Carbon Footprint</h1>
+            <input
+              type="number"
+              name="azureCarbonFootprint"
+              placeholder="Amount in CO2"
+              value={user?.data?.azureFootprint}
+              onChange={(e)=>{updateUserData('azureFootprint', Number(e.target.value))}}
+            ></input>
+          </div>
 
-      <button className="bg-red-100" onClick={e => {updateUserData('state', 'COMMUTING')}}>Continue</button>
+        </div>
+       : <></>}
+
+      
+      <button 
+        className="bg-red-100" 
+        onClick={e => {updateUserData('state', 'ELECTRONICS', 'IT', true)}}>
+          Continue
+      </button>
 
     </div>
   )
