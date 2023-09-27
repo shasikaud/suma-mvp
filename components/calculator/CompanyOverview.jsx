@@ -13,6 +13,8 @@ const CompanyOverview = ({ user, updateUserData }) => {
     '2022'
   ]
 
+  // const disabled = user?.data?.fullTimeEmployees;
+
   return (
     <div className="bg-slate-100 p-4 h-full">
 
@@ -55,16 +57,22 @@ const CompanyOverview = ({ user, updateUserData }) => {
         <h3>You can calculate part-time employees as: e.g. four 50% positions amounting to 2 full time employees.</h3>
         <input 
           name="fullTimeEmployees"
+          type="number"
+          placeholder="Enter Amount"
+          value={user?.data?.fullTimeEmployees}
           onChange={(e)=>{updateUserData('fullTimeEmployees', Number(e.target.value))}}
         >
         </input>
       </div>
 
       <div className="flex flex-row justify-end mt-4">
-        <button className="bg-green-500 text-slate-50 rounded-lg px-4 py-2" onClick={e => {updateUserData('state', 'OFFICES')}}>Continue</button>
+        <button 
+          className="bg-primary text-slate-50 rounded-lg px-4 py-2" 
+          onClick={e => {updateUserData('state', 'OFFICES', 'COMPANY_OVERVIEW', true)}}
+        >
+          Continue
+        </button>
       </div>
-
-      <button onClick={e => {updateUserData('states.COMPANY_OVERVIEW', 'ACTIVE')}}>Test</button>
       
     </div>
   )
