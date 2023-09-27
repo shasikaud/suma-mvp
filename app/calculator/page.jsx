@@ -61,78 +61,85 @@ const Calculator = () => {
 
 
   return (
-    <div className="flex flex-row w-full bg-slate-100">
+    <div className='flex flex-col w-full'>
 
-      <div className='w-9/12'>
-        {(currentState === 'COMPANY_OVERVIEW') ? <CompanyOverview user={user} updateUserData={updateUserData}/> : <></>}
-        {(currentState === 'OFFICES') ? <Offices user={user} updateUserData={updateUserData}/> : <></>}
-        {(currentState === 'IT') ? <IT user={user} updateUserData={updateUserData}/> : <></>}
-        {(currentState === 'ELECTRONICS') ? <Electronics user={user} updateUserData={updateUserData}/> : <></>}
-        {(currentState === 'COMMUTING') ? <Commuting user={user} updateUserData={updateUserData}/> : <></>}
-        {(currentState === 'BUSINESS_TRAVEL') ? <BusinessTravel user={user} updateUserData={updateUserData}/> : <></>}
-        {(currentState === 'BLOCKCHAIN') ? <Blockchain user={user} updateUserData={updateUserData}/> : <></>}
-
+      <div className='bg-slate-50 text-xl p-2'>
+        Calculator
       </div>
 
-      <div className='flex flex-col w-3/12 mt-4 mx-4 gap-2'>
-        <NavigationCard 
-          index={'1'} 
-          active={currentState === 'COMPANY_OVERVIEW'} 
-          text={'Company Overview'} 
-          completed={user?.data?.completedStates.includes('COMPANY_OVERVIEW')}
-          id='COMPANY_OVERVIEW'
-          updateUserData={updateUserData}
-        />
-        <NavigationCard 
-          index={'2'} 
-          active={currentState === 'OFFICES'} 
-          text={'Offices'} 
-          completed={user?.data?.completedStates.includes('OFFICES')}
-          id='OFFICES'
-          updateUserData={updateUserData}
-        />
-        <NavigationCard 
-          index={'3'} 
-          active={currentState === 'IT'} 
-          text={'Cloud Services'} 
-          completed={user?.data?.completedStates.includes('IT')}
-          id='IT'
-          updateUserData={updateUserData}
-        />
-        <NavigationCard 
-          index={'4'} 
-          active={currentState === 'ELECTRONICS'} 
-          text={'Electronics & Devices'} 
-          completed={user?.data?.completedStates.includes('ELECTRONICS')}
-          id='ELECTRONICS'
-          updateUserData={updateUserData}
-        />
-        <NavigationCard 
-          index={'5'} 
-          active={currentState === 'COMMUTING'} 
-          text={'Employee Commuting'} 
-          completed={user?.data?.completedStates.includes('COMMUTING')}
-          id='COMMUTING'
-          updateUserData={updateUserData}
-        />
-        <NavigationCard 
-          index={'6'} 
-          active={currentState === 'BUSINESS_TRAVEL'} 
-          text={'Business Travel'} 
-          completed={user?.data?.completedStates.includes('BUSINESS_TRAVEL')}
-          id='BUSINESS_TRAVEL'
-          updateUserData={updateUserData}
-        />
-        <NavigationCard 
-          index={'7'} 
-          active={currentState === 'BLOCKCHAIN'} 
-          text={'Blockchain Transactions'} 
-          completed={user?.data?.completedStates.includes('BLOCKCHAIN')}
-          id='BLOCKCHAIN'
-          updateUserData={updateUserData}
-        />
-      </div>
-      
+      <div className="flex flex-row w-full h-screen">
+
+        <div className='w-9/12 h-full'>
+          {(currentState === 'COMPANY_OVERVIEW') ? <CompanyOverview user={user} updateUserData={updateUserData}/> : <></>}
+          {(currentState === 'OFFICES') ? <Offices user={user} updateUserData={updateUserData}/> : <></>}
+          {(currentState === 'IT') ? <IT user={user} updateUserData={updateUserData}/> : <></>}
+          {(currentState === 'ELECTRONICS') ? <Electronics user={user} updateUserData={updateUserData}/> : <></>}
+          {(currentState === 'COMMUTING') ? <Commuting user={user} updateUserData={updateUserData}/> : <></>}
+          {(currentState === 'BUSINESS_TRAVEL') ? <BusinessTravel user={user} updateUserData={updateUserData}/> : <></>}
+          {(currentState === 'BLOCKCHAIN') ? <Blockchain user={user} updateUserData={updateUserData}/> : <></>}
+
+        </div>
+
+        <div className='flex flex-col w-3/12 ml-4 gap-2 bg-slate-50 p-4'>
+          <NavigationCard 
+            index={'1'} 
+            active={currentState === 'COMPANY_OVERVIEW'} 
+            text={'Company Overview'} 
+            completed={user?.data?.completedStates.includes('COMPANY_OVERVIEW')}
+            id='COMPANY_OVERVIEW'
+            updateUserData={updateUserData}
+          />
+          <NavigationCard 
+            index={'2'} 
+            active={currentState === 'OFFICES'} 
+            text={'Offices'} 
+            completed={user?.data?.completedStates.includes('OFFICES')}
+            id='OFFICES'
+            updateUserData={updateUserData}
+          />
+          <NavigationCard 
+            index={'3'} 
+            active={currentState === 'IT'} 
+            text={'Cloud Services'} 
+            completed={user?.data?.completedStates.includes('IT')}
+            id='IT'
+            updateUserData={updateUserData}
+          />
+          <NavigationCard 
+            index={'4'} 
+            active={currentState === 'ELECTRONICS'} 
+            text={'Electronics & Devices'} 
+            completed={user?.data?.completedStates.includes('ELECTRONICS')}
+            id='ELECTRONICS'
+            updateUserData={updateUserData}
+          />
+          <NavigationCard 
+            index={'5'} 
+            active={currentState === 'COMMUTING'} 
+            text={'Employee Commuting'} 
+            completed={user?.data?.completedStates.includes('COMMUTING')}
+            id='COMMUTING'
+            updateUserData={updateUserData}
+          />
+          <NavigationCard 
+            index={'6'} 
+            active={currentState === 'BUSINESS_TRAVEL'} 
+            text={'Business Travel'} 
+            completed={user?.data?.completedStates.includes('BUSINESS_TRAVEL')}
+            id='BUSINESS_TRAVEL'
+            updateUserData={updateUserData}
+          />
+          <NavigationCard 
+            index={'7'} 
+            active={currentState === 'BLOCKCHAIN'} 
+            text={'Blockchain Transactions'} 
+            completed={user?.data?.completedStates.includes('BLOCKCHAIN')}
+            id='BLOCKCHAIN'
+            updateUserData={updateUserData}
+          />
+        </div>
+        
+    </div>
   </div>
   )
 }
