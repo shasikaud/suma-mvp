@@ -2,12 +2,12 @@
 
 const Electronics = ({ user, updateUserData }) => {
   return (
-    <div className="flex flex-col">
-        <h1>Electronics & Devices</h1>
+    <div className="flex flex-col h-full ml-[265px] px-8 bg-backgroundColor">
+        <h1 className="text-2xl mb-10">Electronics & Devices</h1>
         
-        <div>
-            <h1>How many laptops your company provided on 2022?</h1>
-            <input 
+        <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 mb-4">
+            <h3 className="font-semibold">How many laptops your company provided on 2022?</h3>
+            <input className="border-gray-200 rounded-md border-2 p-2"
                 type="number"
                 placeholder="0"
                 value={user?.data?.laptopCount}
@@ -16,9 +16,9 @@ const Electronics = ({ user, updateUserData }) => {
             </input>
         </div>
 
-        <div>
-            <h1>How many desktop computers your company provided on 2022?</h1>
-            <input 
+        <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 mb-4">
+            <h3 className="font-semibold">How many desktop computers your company provided on 2022?</h3>
+            <input className="border-gray-200 rounded-md border-2 p-2"
                 type="number"
                 placeholder="0"
                 value={user?.data?.desktopCount}
@@ -27,9 +27,9 @@ const Electronics = ({ user, updateUserData }) => {
             </input>
         </div>
 
-        <div>
-            <h1>How many mobile phones your company provided on 2022?</h1>
-            <input 
+        <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 mb-4">
+            <h3 className="font-semibold">How many mobile phones your company provided on 2022?</h3>
+            <input className="border-gray-200 rounded-md border-2 p-2"
                 type="number"
                 placeholder="0"
                 value={user?.data?.mobileCount}
@@ -38,9 +38,9 @@ const Electronics = ({ user, updateUserData }) => {
             </input>
         </div>
 
-        <div>
-            <h1>How many desktop screens/TVs your company provided on 2022?</h1>
-            <input 
+        <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 mb-4">
+            <h3 className="font-semibold">How many desktop screens/TVs your company provided on 2022?</h3>
+            <input className="border-gray-200 rounded-md border-2 p-2"
                 type="number"
                 placeholder="0"
                 value={user?.data?.screenCount}
@@ -49,11 +49,13 @@ const Electronics = ({ user, updateUserData }) => {
             </input>
         </div>
 
-        <button 
-            className="bg-red-100" 
-            onClick={e => {updateUserData('state', 'COMMUTING', 'ELECTRONICS', true)}}>
-          Continue
-        </button>
+        <div className="flex flex-row justify-end my-10">
+            <button 
+                className="bg-primary text-white rounded-xl px-4 py-2" 
+                onClick={e => {updateUserData('state', 'COMMUTING', 'ELECTRONICS', true)}}>
+            Continue
+            </button>
+        </div>
 
     </div>
   )

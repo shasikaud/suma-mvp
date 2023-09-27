@@ -15,8 +15,8 @@ const Offices = ({ user, updateUserData }) => {
 
     const hasOffice = user?.data?.hasOffice;
     // console.log(`hasOffice: ${hasOffice}`)
-    const btnColorYes = (hasOffice === 'NOT-DEFINED') ? '' : (hasOffice === 'YES') ? 'bg-primary' : 'bg-secondary'
-    const btnColorNo = (hasOffice === 'NOT-DEFINED') ? '' : (hasOffice === 'YES') ? 'bg-secondary' : 'bg-primary'
+    const btnColorYes = (hasOffice === 'NOT-DEFINED') ? '' : (hasOffice === 'YES') ? 'bg-primary text-black border-black' : 'bg-white border-gray-200 text-gray-200'
+    const btnColorNo = (hasOffice === 'NOT-DEFINED') ? '' : (hasOffice === 'YES') ? 'bg-white border-gray-200 text-gray-200' : 'bg-primary text-black border-black'
 
     useEffect(() => {
         const addedOffices = user?.data?.offices;
@@ -41,20 +41,20 @@ const Offices = ({ user, updateUserData }) => {
     }
 
     return (
-        <div className={`flex flex-col`}>
-
-            <div className="flex flex-col">
-                <h1>Do you have an office?</h1>
+        <div className={`flex flex-col ml-[265px] h-full px-8 bg-backgroundColor`}>
+            <h1 className="text-2xl ">Offices</h1>
+            <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 mt-10 mb-4">
+                <h3 className="font-semibold">Do you have an office?</h3>
                 <div className="flex flex-row gap-4">
                     <button 
                         onClick={e => {updateUserData('hasOffice', 'YES')}}
-                        className={`rounded-md px-2 ${btnColorYes}`}
+                        className={`rounded-full px-4 py-2 text-sm m-2 border-2 ${btnColorYes}`}
                     > 
                         Yes
                     </button>
                     <button 
                         onClick={e => {updateUserData('hasOffice', 'NO')}}
-                        className={`rounded-md px-2 ${btnColorNo}`}
+                        className={`rounded-full px-4 py-2 text-sm m-2 border-2 ${btnColorNo}`}
                     >
                         No
                     </button>
@@ -63,11 +63,11 @@ const Offices = ({ user, updateUserData }) => {
 
             {hasOffice === 'YES' ? 
             <>
-                <div className={`bg-purple-100`}>
-                    <h1>Add new office</h1>
+                <div className={`flex flex-col py-8 bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 mb-4`}>
+                    <h3 className="font-semibold">List your offices</h3>
                     <form className="flex flex-col">
                         <label>Name</label>
-                        <input  
+                        <input className="border-gray-200 rounded-md border-2 p-2"
                             type="text" 
                             name="name" 
                             value={office.name}
@@ -75,7 +75,7 @@ const Offices = ({ user, updateUserData }) => {
                         }/>
 
                         <label>Office Location</label>
-                        <input 
+                        <input className="border-gray-200 rounded-md border-2 p-2"
                             type="text" 
                             name="officeLocation" 
                             value={office.officeLocation}
@@ -83,14 +83,14 @@ const Offices = ({ user, updateUserData }) => {
                         }/>
 
                         <label>Employee Count</label>
-                        <input 
+                        <input className="border-gray-200 rounded-md border-2 p-2"
                             type="number" 
                             name="employeeCount" 
                             value={office.employeeCount}
                             onChange={(e) => {updateOffice(e.target.name, e.target.value)}
                         }/>
 
-                        <button onClick={addOffice}>Add</button>
+                        <button onClick={addOffice} className="border-2 rounded-full bg-white px-6 py-2 font-medium text-sm">Add New Office</button>
                     </form>
                 </div>
 
@@ -98,9 +98,9 @@ const Offices = ({ user, updateUserData }) => {
                     {offices.map((office, index) => {
                         return (
                             <div className="bg-purple-300" key={index}>
-                                <h1>{office.name}</h1>
-                                <h1>{office.officeLocation}</h1>
-                                <h1>{office.employeeCount}</h1>
+                                <p>{office.name}</p>
+                                <p>{office.officeLocation}</p>
+                                <p>{office.employeeCount}</p>
                             </div>
                         )
                     })}
@@ -108,8 +108,9 @@ const Offices = ({ user, updateUserData }) => {
             </>
             : <></>
             }
-
-            <button className="bg-red-100" onClick={e => {updateUserData('state', 'IT', 'OFFICES', true)}}>Continue</button>
+            <div className="flex flex-row">
+                <button className="justify-end text-white rounded-full px-4 py-2 bg-primary mt-10" onClick={e => {updateUserData('state', 'IT', 'OFFICES', true)}}>Continue</button>
+            </div>
         </div>
     )
 }

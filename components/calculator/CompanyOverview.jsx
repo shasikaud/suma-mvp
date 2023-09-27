@@ -34,20 +34,20 @@ const CompanyOverview = ({ user, updateUserData }) => {
   // const disabled = user?.data?.fullTimeEmployees;
 
   return (
-    <div className="ml-[265px] px-8 bg-slate-100 h-full">
+    <div className="ml-[265px] px-8 h-full bg-backgroundColor">
 
-      <h1 className="text-2xl mt-10">Company Overview</h1>
-      <p className="mt-4 mb-12">Measuring with carbon footprint calculator will use financial data and utilize our own calculation formulas built based on GHG Protocol standards to calculate your business’s carbon footprint. It applies region and industry-level economic data to your operations. Going through the calculation process should take less than an hour depending on what information you have available.</p>
+      <h1 className="text-2xl mb-4">Company Overview</h1>
+      <p className="mt mb-10">Measuring with carbon footprint calculator will use financial data and utilize our own calculation formulas built based on GHG Protocol standards to calculate your business’s carbon footprint. It applies region and industry-level economic data to your operations. Going through the calculation process should take less than an hour depending on what information you have available.</p>
 
       {/* CONTAINER 1 - COMPANY NAME */}
-      <div className="flex flex-row justify-between items-center py-8 bg-slate-50 px-10 mt-2 mb-4 rounded-xl border-2 border-gray-200 p-4 my-2">
+      <div className="flex flex-row justify-between items-center py-8 bg-white px-10 mt-2 mb-4 rounded-xl border-2 border-gray-200 p-4 my-2">
         <h2 className="font-semibold text-lg">{user?.companyName}</h2>
         {/* <h3>Company registered in Finland</h3> */}
         <button className="flex flex-col rounded-lg border-2 border-orange-400 p-2 text-orange-400">Change Details</button>
       </div>
 
       {/* CONTAINER 2 - BUSINESS SECTOR */}
-      <div className="flex flex-col py-8 justify-center bg-slate-50 px-10 gap-2 rounded-xl border-2 border-gray-200 my-4">
+      <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 my-4">
         <h2 className="font-semibold">Business Sector</h2>
         <select onChange={e => {updateUserData('businessSector', e.target.value)}} 
           className="border-gray-200 rounded-md border-2 p-2"
@@ -62,7 +62,7 @@ const CompanyOverview = ({ user, updateUserData }) => {
       </div>
 
       {/* CONTAINER 3 - CALENDAR YEAR */}
-      <div className="flex flex-col py-8 justify-center bg-slate-50 px-10 gap-2 rounded-xl border-2 border-gray-200 my-4">
+      <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 my-4">
         <h2 className="font-semibold">Select calendar year to measure</h2>
         <select className="border-gray-200 rounded-md border-2 p-2">
           {
@@ -74,7 +74,7 @@ const CompanyOverview = ({ user, updateUserData }) => {
       </div>
 
       {/* CONTAINER 4 - EMPLOYEE AMOUNT */}
-      <div className="flex flex-col py-8 justify-center bg-slate-50 px-10 gap-2 rounded-xl border-2 border-gray-200">
+      <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200">
         <h2 className="font-semibold">How many full time equivalent employees does your company have?</h2>
         <h3>You can calculate part-time employees as: e.g. four 50% positions amounting to 2 full time employees.</h3>
         <input className="border-gray-200 rounded-md border-2 p-2"
@@ -87,9 +87,9 @@ const CompanyOverview = ({ user, updateUserData }) => {
         </input>
       </div>
 
-      <div className="flex flex-row justify-end mt-4">
+      <div className="flex flex-row justify-end my-10">
         <button 
-          className="bg-primary text-slate-50 rounded-lg px-4 py-2" 
+          className="bg-primary text-white rounded-xl px-4 py-2" 
           onClick={e => {updateUserData('state', 'OFFICES', 'COMPANY_OVERVIEW', true)}}
         >
           Continue

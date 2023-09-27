@@ -14,8 +14,8 @@ const Dashboard = () => {
         <h3>Dashboard</h3>
       </div>
 
-      <h1 className='font-semibold text-2xl mb-2'>{`Hello ${session?.user?.firstName}! Welcome to the SUMA Platform.`}</h1>
-      <h1 className="text-xl mt-8 mb-4">Next Step</h1>
+      <h1 className='font-semibold text-2xl mt-8 mb-2'>{`Hello ${session?.user?.firstName}! Welcome to the SUMA Platform.`}</h1>
+      <h1 className="text-xl mt-4 mb-4">Next Step</h1>
 
       <div className='flex flex-col border-2 w-3/12 p-8 rounded-lg'>
         <h1 className='border-2 rounded-md border-primary text-primary px-3 py-1 inline-block mr-auto mb-8'>Beta</h1>
