@@ -14,6 +14,7 @@ import NavigationCard from '@/components/calculator/utils/NavigationCard';
 import BusinessTravel from '@/components/calculator/BusinessTravel';
 import Electronics from '@/components/calculator/Electronics';
 import Blockchain from '@/components/calculator/Blockchain';
+import Summary from '@/components/calculator/Summary';
 
 
 const Calculator = () => {
@@ -58,13 +59,13 @@ const Calculator = () => {
 
 
   if (currentState === 'CREATED') return <Start updateUserData={updateUserData}/>
-
+  if (currentState === 'SUMMARY') return <Summary user={user}/>
 
   return (
     <div className='flex flex-col w-full'>
 
       <div className='bg-slate-50 text-xl p-2'>
-        Calculator
+        Carbon Footprint Calculator
       </div>
 
       <div className="flex flex-row w-full h-screen">
