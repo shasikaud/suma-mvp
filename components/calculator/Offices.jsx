@@ -109,7 +109,9 @@ const Offices = ({ user, updateUserData }) => {
             : <></>
             }
 
-            <button className="bg-red-100" onClick={e => {updateUserData('state', 'IT', 'OFFICES', true)}}>Continue</button>
+            <button className="bg-red-100" onClick={e => {updateUserData('state', 'IT', 'OFFICES', true)}}>
+                Continue
+            </button>
         </div>
     )
 }

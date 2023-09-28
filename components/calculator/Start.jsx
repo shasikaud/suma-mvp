@@ -2,7 +2,7 @@
 
 const Start = ({ updateUserData }) => {
   return (
-    <div className="flex flex-col w-full gap-2">
+    <div className="flex flex-col w-full h-screen gap-2">
         <h1>Calculate your company's carbon footprint </h1>
         <h1>Here's what you'll need to complete the calculations </h1>
         <h1>Measuring with our carbon footprint calculator should take less than an hour if you come prepared with the following information about your company's operations. </h1>
