@@ -2,36 +2,28 @@
 
 const CompanyOverview = ({ user, updateUserData }) => {
 
-  // ADD HERE THE FOLLOWING BUSINESS SECTORS:
-    // 'Fintech',
-    // 'Blockchain & Cryptocurrency',
-    // 'Saas (Software-as-a-Service',
-    // 'AI & ML',
-    // 'HealthTech',
-    // 'EduTech',
-    // 'E-commerce',
-    // 'Gaming',
-    // 'CleanTech & Energy',
-    // 'Cybersecurity',
-    // 'Cloud Computing & IT Infrastructure',
-    // 'Media & Entertainment Tech'
-
-
   const businessSectors = [
-    'Tech consultancy / development for clients',
-    'Software-as-a-service',
-    'Cloud services',
-    'Blockchain network'
+    'Fintech',
+    'Blockchain & Cryptocurrency',
+    'Saas (Software-as-a-Service)',
+    'AI & ML',
+    'HealthTech',
+    'EduTech',
+    'E-commerce',
+    'Gaming',
+    'CleanTech & Energy',
+    'Cybersecurity',
+    'Cloud Computing & IT Infrastructure',
+    'Media & Entertainment Tech'
   ] 
 
-  // Add the following years to measure:
-  // 2022, 2021, 2020, 2019, 2018
-
   const yearsToMeasure = [
-    '2022'
+    '2022', 
+    '2021', 
+    '2020', 
+    '2019', 
+    '2018'
   ]
-
-  // const disabled = user?.data?.fullTimeEmployees;
 
   return (
     <div className="ml-[265px] px-8 h-full bg-backgroundColor">
@@ -42,7 +34,7 @@ const CompanyOverview = ({ user, updateUserData }) => {
       {/* CONTAINER 1 - COMPANY NAME */}
       <div className="flex flex-row justify-between items-center py-8 bg-white px-10 mt-2 mb-4 rounded-xl border-2 border-gray-200 p-4 my-2">
         <h2 className="font-semibold text-lg">{user?.companyName}</h2>
-        {/* <h3>Company registered in Finland</h3> */}
+        <h3 className="text-sm">{`Company registered in ${user?.registeredCountry}`}</h3>
         <button className="flex flex-col rounded-lg border-2 border-orange-400 p-2 text-orange-400">Change Details</button>
       </div>
 
@@ -64,7 +56,9 @@ const CompanyOverview = ({ user, updateUserData }) => {
       {/* CONTAINER 3 - CALENDAR YEAR */}
       <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 my-4">
         <h2 className="font-semibold">Select calendar year to measure</h2>
-        <select className="border-gray-200 rounded-md border-2 p-2">
+        <select 
+          onChange={e => {updateUserData('calendarYear', e.target.value)}}
+          className="border-gray-200 rounded-md border-2 p-2">
           {
             yearsToMeasure.map((year, index) => {
               return (<option key={index}>{year}</option>)
