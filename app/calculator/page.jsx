@@ -81,7 +81,7 @@ const Calculator = () => {
 
         </div>
 
-        <div className='flex flex-col w-3/12 ml-4 gap-2 bg-slate-50 p-4'>
+        <div className='flex flex-col w-3/12 gap-2 bg-slate-50 pr-8'>
           <NavigationCard 
             index={'1'} 
             active={currentState === 'COMPANY_OVERVIEW'} 
