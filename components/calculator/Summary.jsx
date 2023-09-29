@@ -2,11 +2,13 @@
 
 const Summary = ({ user }) => {
   return (
-    <div className='flex flex-col w-full'>
+    <div className='flex flex-col w-full bg-red-100 text-sm text-black'>
 
-      <div className='bg-slate-50 text-xl p-2'>
-        Summary
-      </div>
+        <h1 className='bg-white p-2 text-black'>Summary</h1>
+
+        <div>
+          total co2 tonnes
+        </div>
 
     </div>
   )

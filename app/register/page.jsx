@@ -97,15 +97,15 @@ const RegisterForm = () => {
               onChange={e => updateForm(e.target.name, e.target.value)}
             />
 
-          <select 
+            <select 
               name='registeredCountry'
               onChange={e => {updateForm(e.target.name, e.target.value)}} 
               value={formData.registeredCountry}>
-            {
-              countries.map((country, index) => {
-                return (<option key={index}>{country}</option>)
-              })
-            }
+              {
+                countries.map((country, index) => {
+                  return (<option key={index}>{country}</option>)
+                })
+              }
             </select>
 
             <input 

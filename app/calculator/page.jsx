@@ -30,31 +30,23 @@ const Calculator = () => {
   useEffect(() => {
     const temp = async(email) => {
       const user = await getUserByEmail(email);
-      // console.log(user);
       if (user) setUser(user);
     }
     temp(session?.user?.email);
   }, []);
 
   const updateUserData = async(key, value, completedState, save) => {
-    // console.log(`Updating userData ${key} - ${value} - ${completedState} - ${save}`);
     const kv = { [key]: value };
     const data = { ...user.data, ...kv }
     const updatedUser = { ...user, data }
     if (completedState) {
-      // console.log(`completed state: ${completedState}`)
       const completedStates = updatedUser.data.completedStates;
       if (!completedStates.includes(completedState)) {
         completedStates.push(completedState);
-        // console.log(`updating completed state: ${completedStates}`)
-        // const kv = { [key]: value };
-        // const data = { ...user.data, ...kv }
-        // const updatedUser = { ...user, data }
       }
     } 
       if (save) await updateUserDataDB(updatedUser);
       setUser(updatedUser)
-      // console.log(updatedUser);
   }
 
 
@@ -64,7 +56,7 @@ const Calculator = () => {
   return (
     <div className='flex flex-col w-full'>
 
-      <div className='bg-slate-50 text-xl p-2'>
+      <div className='bg-slate-50 text-xl text-black p-2'>
         Carbon Footprint Calculator
       </div>
 
