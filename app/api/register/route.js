@@ -5,7 +5,7 @@ import bcrypt from "bcrypt"
 export const POST = async (req) => {
     console.log('POST /api/register')
     try {
-        const { email, password, firstName, lastName, companyName } = await req.json();
+        const { email, password, firstName, lastName, companyName, registeredCountry } = await req.json();
         await connectToDB();
         const hashedPassword = await bcrypt.hash(password, 10);
         await User.create({ 
@@ -14,6 +14,7 @@ export const POST = async (req) => {
             firstName,
             lastName,
             companyName,
+            registeredCountry,
             data: {
                 state: 'CREATED',
                 completedStates: [],

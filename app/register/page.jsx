@@ -3,6 +3,7 @@
 import { getUserByEmail, registerUser } from "@/utils/apiCalls"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import COUNTRIES from "@/utils/countries"
 import Link from "next/link"
 
 const RegisterForm = () => {
@@ -11,6 +12,7 @@ const RegisterForm = () => {
       firstName: '',
       lastName: '',
       companyName: '',
+      registeredCountry: 'Select the Country',
       email: '',
       password: '',
       repeatPassword: ''
@@ -21,7 +23,8 @@ const RegisterForm = () => {
                           formData.companyName !== '' &&
                           formData.email !== '' &&
                           formData.password !== '' &&
-                          (formData.password === formData.repeatPassword) 
+                          (formData.password === formData.repeatPassword) &&
+                          formData.registeredCountry !== 'Select the Country'
 
     // console.log(validEntries)
 
@@ -34,6 +37,7 @@ const RegisterForm = () => {
           firstName: '',
           lastName: '',
           companyName: '',
+          registeredCountry: 'Select the Country',
           email: '',
           password: '',
           repeatPassword: ''
@@ -53,6 +57,8 @@ const RegisterForm = () => {
         setFormData(updatedFormData);
         // console.log(formData)
       }
+
+      const countries = COUNTRIES.countries;
     
       return (
         <div className="flex justify-center items-center w-screen bg-slate-50 text-slate-500">
@@ -90,6 +96,17 @@ const RegisterForm = () => {
               value={formData.companyName}
               onChange={e => updateForm(e.target.name, e.target.value)}
             />
+
+          <select 
+              name='registeredCountry'
+              onChange={e => {updateForm(e.target.name, e.target.value)}} 
+              value={formData.registeredCountry}>
+            {
+              countries.map((country, index) => {
+                return (<option key={index}>{country}</option>)
+              })
+            }
+            </select>
 
             <input 
               type="password" 
