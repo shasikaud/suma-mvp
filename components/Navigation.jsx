@@ -34,11 +34,10 @@ const NavigationBar = () => {
                 <img src='assets/calculator-icon.svg' alt='Calculator Icon' className='inline-block mr-2' />Calculator</Link>
             </div>
 
-            {/* SETTINGS ICON AND NAV LINK BELOW */}
-            {/* <div>
+            <div>
                 <Link href='/settings' className={`py-2 flex gap-3 px-4 mb-2 ${path === '/settings' ? 'bg-slate-200 rounded font-semibold' : ''}`}>
                 <img src='assets/settings-icon.svg' alt='Settings Icon' className='inline-block mr-2' />Settings</Link>
-            </div> */}
+            </div> 
 
             <button onClick={()=>signOut()} className='bg-red-100 hover:bg-red-400 mt-auto mb-8 rounded-md py-2'>Sign Out</button>
         </div>

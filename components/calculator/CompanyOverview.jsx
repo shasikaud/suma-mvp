@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 const CompanyOverview = ({ user, updateUserData }) => {
 
   const businessSectors = [
@@ -35,7 +37,12 @@ const CompanyOverview = ({ user, updateUserData }) => {
       <div className="flex flex-row justify-between items-center py-8 bg-white px-10 mt-2 mb-4 rounded-xl border-2 border-gray-200 p-4 my-2">
         <h2 className="font-semibold text-lg">{user?.companyName}</h2>
         <h3 className="text-sm">{`Company registered in ${user?.registeredCountry}`}</h3>
-        <button className="flex flex-col rounded-lg border-2 border-orange-400 p-2 text-orange-400">Change Details</button>
+        <Link href={'/settings'}>
+          <button 
+            className="flex flex-col rounded-lg border-2 border-orange-400 p-2 text-orange-400"
+          >
+          Change Details
+        </button></Link>
       </div>
 
       {/* CONTAINER 2 - BUSINESS SECTOR */}

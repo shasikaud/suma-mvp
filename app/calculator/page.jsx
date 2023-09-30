@@ -56,11 +56,11 @@ const Calculator = () => {
   return (
     <div className='flex flex-col w-full'>
 
-      <div className='bg-slate-50 text-xl text-black p-2'>
+      <div className='ml-[265px] bg-white text-xl text-black p-2 pl-4'>
         Carbon Footprint Calculator
       </div>
 
-      <div className="flex flex-row w-full h-screen">
+      <div className="flex flex-row w-full h-screen mt-2">
 
         <div className='w-9/12 h-full'>
           {(currentState === 'COMPANY_OVERVIEW') ? <CompanyOverview user={user} updateUserData={updateUserData}/> : <></>}

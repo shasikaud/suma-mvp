@@ -2,7 +2,7 @@
 
 const Summary = ({ user }) => {
   return (
-    <div className='flex flex-col w-full bg-red-100 text-sm text-black'>
+    <div className='ml-[265px] flex flex-col w-full bg-red-100 text-sm text-black'>
 
         <h1 className='bg-white p-2 text-black'>Summary</h1>
 
