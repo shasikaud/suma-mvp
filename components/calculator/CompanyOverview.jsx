@@ -1,31 +1,12 @@
 'use client'
 
+import LISTS from '@/utils/lists'
 import Link from 'next/link'
 
 const CompanyOverview = ({ user, updateUserData }) => {
 
-  const businessSectors = [
-    'Fintech',
-    'Blockchain & Cryptocurrency',
-    'Saas (Software-as-a-Service)',
-    'AI & ML',
-    'HealthTech',
-    'EduTech',
-    'E-commerce',
-    'Gaming',
-    'CleanTech & Energy',
-    'Cybersecurity',
-    'Cloud Computing & IT Infrastructure',
-    'Media & Entertainment Tech'
-  ] 
-
-  const yearsToMeasure = [
-    '2022', 
-    '2021', 
-    '2020', 
-    '2019', 
-    '2018'
-  ]
+  const businessSectors = LISTS.BUSINESS_SECTORS;
+  const yearsToMeasure = LISTS.YEARS;
 
   return (
     <div className="ml-[265px] px-8 h-full bg-backgroundColor">

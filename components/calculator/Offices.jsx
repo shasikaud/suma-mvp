@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import COUNTRIES from "@/utils/countries";
+import COUNTRIES from "@/utils/lists";
 
 const Offices = ({ user, updateUserData }) => {
 

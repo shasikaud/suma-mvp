@@ -1,65 +1,68 @@
 'use client'
 
+import React from "react"
 import { getUserByEmail, registerUser } from "@/utils/apiCalls"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import COUNTRIES from "@/utils/countries"
 import Link from "next/link"
+import LISTS from "@/utils/lists"
+import LoadingScreen from "@/components/loading/LoadingScreen"
 
 const RegisterForm = () => {
 
-    const [formData, setFormData] = useState({
+    const countries = LISTS.COUNTRIES;
+
+    const initialState = {
       firstName: '',
       lastName: '',
       companyName: '',
-      registeredCountry: 'Select the Country',
+      registeredCountry: countries[0],
       email: '',
       password: '',
       repeatPassword: ''
-    } )
+    } 
+
+    const [formData, setFormData] = useState(initialState);
+    const [isLoading, setIsLoading] = useState(false);
 
     const validEntries = formData.firstName !== '' && 
                           formData.lastName !== '' &&
                           formData.companyName !== '' &&
                           formData.email !== '' &&
                           formData.password !== '' &&
-                          (formData.password === formData.repeatPassword) &&
-                          formData.registeredCountry !== 'Select the Country'
-
-    // console.log(validEntries)
+                          (formData.password === formData.repeatPassword) 
 
     const router = useRouter();
     
     const submitForm = async(e) => {
-        e.preventDefault();
-        const user = await getUserByEmail(formData.email);
-        setFormData({
-          firstName: '',
-          lastName: '',
-          companyName: '',
-          registeredCountry: 'Select the Country',
-          email: '',
-          password: '',
-          repeatPassword: ''
-        })
-        if (user) {
-          alert(`User already exists with email ${formData.email}`);
-          return;
-        }
-        const success = await registerUser(formData);
-        if (success) router.push('/');
-        if (!success) alert(`User registration failed, please retry or contact the team.`)
+      try {
+          setIsLoading(true);
+          e.preventDefault();
+          const user = await getUserByEmail(formData.email);
+          setFormData(initialState);
+          if (user) {
+            alert(`User already exists with email ${formData.email}`);
+            setIsLoading(false);
+            return;
+          }
+          const success = await registerUser(formData);
+          if (success) router.push('/');
+          setIsLoading(false);
+          if (!success) alert(`User registration failed, please retry or contact the team.`)
+      } catch(e) {
+        console.log(e);
+        setIsLoading(false)
+      }
     }
     
       const updateForm = (name, value) => {
         const data = { [name] : value };
         const updatedFormData = { ...formData, ...data }
         setFormData(updatedFormData);
-        // console.log(formData)
       }
 
-      const countries = COUNTRIES.countries;
-    
+      if (isLoading) return <LoadingScreen/>
+
       return (
         <div className="flex justify-center items-center w-screen bg-slate-50 text-slate-500">
           <form onSubmit={submitForm} className="flex flex-col gap-2 m-4 p-4 border-2 rounded-lg border-primary">
