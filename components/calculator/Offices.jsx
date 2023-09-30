@@ -49,10 +49,8 @@ const Offices = ({ user, updateUserData }) => {
     }
 
     const deleteOffice = (name) => {
-        console.log(`delete office `, name)
         const existingOffices = [...offices];
         const filtered = existingOffices.filter(office => office.name !== name);
-        console.log(filtered)
         setOffices(filtered);
     }
 

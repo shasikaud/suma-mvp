@@ -35,7 +35,7 @@ export const POST = async (req) => {
                 desktopCount: 0,
                 mobileCount: 0,
                 screenCount: 0,
-                wfhEmployeePerct: 0,
+                wfhEmployeeCount: 0,
                 workingDaysAvg: 0,
                 walkBikeScooterPerct: 0,
                 trainPerct: 0,

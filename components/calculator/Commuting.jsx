@@ -43,13 +43,13 @@ const Commuting = ({ user, updateUserData }) => {
             <h1 className="text-xs  mb-5">Office with the highest number of employees will be considered.</h1>
 
             <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 mb-4">
-                <h1>What percentage of your employees work from home (approximately) </h1>
+                <h1>How many employees work from home?</h1>
                 <input className="border-gray-200 rounded-md border-2 p-2"
                     type="number" 
-                    value={user?.data?.wfhEmployeePerct} 
+                    value={user?.data?.wfhEmployeeCount} 
                     min="0"
-                    max="100"
-                    onChange={(e)=>{updateUserData('wfhEmployeePerct', Number(e.target.value))}}>
+                    max={maxOffice.employeeCount}
+                    onChange={(e)=>{updateUserData('wfhEmployeeCount', Number(e.target.value))}}>
                 </input>
             </div>
 
