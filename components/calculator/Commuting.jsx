@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 
 const Commuting = ({ user, updateUserData }) => {
 
+    if (!user?.data) return <LoadingScreenSecondary/>
+
     const [offices, setOffices] = useState([])
 
     useEffect(() => {

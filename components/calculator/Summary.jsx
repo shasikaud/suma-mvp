@@ -6,6 +6,8 @@ import calculateCarbonFootPrint from "@/utils/carbonCalculator"
 
 const Summary = ({ user }) => {
 
+  if (!user?.data) return <LoadingScreenSecondary/>
+
   const summary = calculateCarbonFootPrint(user);
 
   return (

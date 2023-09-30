@@ -50,7 +50,7 @@ const Calculator = () => {
   }
 
 
-  if (currentState === 'CREATED') return <Start updateUserData={updateUserData}/>
+  if (currentState === 'CREATED') return <Start user={user} updateUserData={updateUserData}/>
   if (currentState === 'SUMMARY') return <Summary user={user}/>
 
   return (

@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 
 const Offices = ({ user, updateUserData }) => {
 
+    if (!user?.data) return <LoadingScreenSecondary/>
+
     const countries = LISTS.COUNTRIES;
     const heatingSources = LISTS.HEATING_SOURCES;
 
@@ -173,14 +175,25 @@ const Offices = ({ user, updateUserData }) => {
             </>
             : <></>
             }
-            <div className="flex flex-row">
+            
+            <div className="flex flex-row gap-8">
+
+                <button 
+                    className="bg-white text-primary border-2 border-primary rounded-xl px-4 py-2" 
+                    onClick={e => {updateUserData('state', 'COMPANY_OVERVIEW')}}>
+                Previous
+                </button>
+
                 <button 
                     disabled={disabled}
                     className={`${disabled ? 'bg-secondary' : 'bg-primary'} text-white rounded-xl px-4 py-2`} 
                     onClick={e => {updateUserData('state', 'IT', 'OFFICES', true)}}>
                 Continue
                 </button>
+
+
             </div>
+
         </div>
     )
 }

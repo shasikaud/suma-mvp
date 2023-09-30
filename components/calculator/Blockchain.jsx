@@ -1,6 +1,9 @@
 'use client'
 
 const Blockchain = ({ user, updateUserData }) => {
+
+  if (!user?.data) return <LoadingScreenSecondary/>
+  
   return (
     <div className="ml-[265px] px-8 h-full bg-backgroundColor">
       <h1 className="text-2xl mb-10">Blockchain transactions</h1>

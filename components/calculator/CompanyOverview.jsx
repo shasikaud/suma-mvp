@@ -7,6 +7,8 @@ import Link from 'next/link'
 
 const CompanyOverview = ({ user, updateUserData }) => {
 
+  if (!user?.data) return <LoadingScreenSecondary/>
+
   const businessSectors = LISTS.BUSINESS_SECTORS;
   const yearsToMeasure = LISTS.YEARS;
 

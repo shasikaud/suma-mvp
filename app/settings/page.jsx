@@ -3,8 +3,10 @@
 import { useState, useEffect } from 'react';
 import { redirect } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
+import { Suspense } from 'react';
 
 import { deleteUser, getUserByEmail } from '@/utils/apiCalls';
+import LoadingScreenSecondary from '@/components/loading/LoadingScreenSecondary';
 
 const Settings = () => {
 
@@ -32,6 +34,8 @@ const Settings = () => {
         if (success) signOut();
     }
 
+    if (!user?.data) return <LoadingScreenSecondary/>
+
     return (
         <div className="ml-[265px] flex flex-col p-8 gap-4">
 
@@ -41,7 +45,9 @@ const Settings = () => {
                 <h1>Company</h1>
                 <div className='flex flex-row gap-4'>
                     <h1>Name</h1>
-                    <h1>{user?.companyName}</h1>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <h1>{user?.companyName}</h1>
+                    </Suspense>
                 </div>
             </div>
 

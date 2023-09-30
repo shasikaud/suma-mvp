@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { signOut, useSession } from 'next-auth/react'
 import { usePathname } from 'next/navigation';
+import LoadingScreen from './loading/LoadingScreen'
 
 const NavigationBar = () => {
 
@@ -13,6 +14,8 @@ const NavigationBar = () => {
 
     const { data: session } = useSession();
     if (!session) return <></>
+
+    if (!session?.user?.data) return <LoadingScreen/>
 
     return (
         <div className='fixed top-0 left-0 z-10 flex flex-col flex-shrink-0 w-width265 h-full overflow-y-auto space-between text-grayBlue bg-white px-4 pt-4 border-r-2 text-sm'>

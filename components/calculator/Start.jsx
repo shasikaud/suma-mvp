@@ -1,6 +1,9 @@
 'use client'
 
-const Start = ({ updateUserData }) => {
+const Start = ({ user, updateUserData }) => {
+
+  if (!user?.data) return <LoadingScreenSecondary/>
+
   return (
     <div className="flex flex-col w-full gap-2 pl-8 ml-[265px] bg-backgroundColor">
         <h3 className="py-8 mb-8 text-grayBlue font-semibold">Calculate your company's carbon footprint</h3>

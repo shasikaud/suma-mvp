@@ -3,6 +3,8 @@
 
 const IT = ({ user, updateUserData }) => {
 
+  if (!user?.data) return <LoadingScreenSecondary/>
+
   const useCloud = user?.data?.useCloud;
   const btnColorYes = (useCloud === 'NOT-DEFINED') ? '' : (useCloud === 'YES') ? 'bg-primary border-white' : 'bg-white'
   const btnColorNo = (useCloud === 'NOT-DEFINED') ? '' : (useCloud === 'YES') ? 'bg-white' : 'bg-primary border-white'

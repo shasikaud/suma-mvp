@@ -1,6 +1,9 @@
 'use client'
 
 const Electronics = ({ user, updateUserData }) => {
+    
+    if (!user?.data) return <LoadingScreenSecondary/>
+
   return (
     <div className="flex flex-col h-full ml-[265px] px-8 bg-backgroundColor">
         <h1 className="text-2xl mb-10">Electronics & Devices</h1>
