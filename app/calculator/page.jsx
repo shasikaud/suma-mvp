@@ -15,6 +15,7 @@ import BusinessTravel from '@/components/calculator/BusinessTravel';
 import Electronics from '@/components/calculator/Electronics';
 import Blockchain from '@/components/calculator/Blockchain';
 import Summary from '@/components/calculator/Summary';
+import LoadingScreenSecondary from '@/components/loading/LoadingScreenSecondary';
 
 
 const Calculator = () => {
@@ -25,17 +26,22 @@ const Calculator = () => {
   if (!session || !session.user) redirect('/login')
 
   const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
   const currentState = user?.data?.state;
 
   useEffect(() => {
+    setIsLoading(true);
     const temp = async(email) => {
       const user = await getUserByEmail(email);
       if (user) setUser(user);
+      setIsLoading(false);
     }
     temp(session?.user?.email);
   }, []);
 
   const updateUserData = async(key, value, completedState, save) => {
+    setIsLoading(true)
     const kv = { [key]: value };
     const data = { ...user.data, ...kv }
     const updatedUser = { ...user, data }
@@ -47,8 +53,10 @@ const Calculator = () => {
     } 
       if (save) await updateUserDataDB(updatedUser);
       setUser(updatedUser)
+      setIsLoading(false);
   }
 
+  if (isLoading) return <LoadingScreenSecondary/>
 
   if (currentState === 'CREATED') return <Start user={user} updateUserData={updateUserData}/>
   if (currentState === 'SUMMARY') return <Summary user={user}/>

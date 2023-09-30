@@ -5,8 +5,13 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
 const Dashboard = () => {
+
   const { data: session } = useSession();
   if (!session) redirect('/login')
+
+  const state = session?.user?.data?.state;
+  const buttonText = (!state) ? 'Start Now' : (state === 'SUMMARY') ? 'View Summary' : 'Continue';
+
   return (
     <div className="ml-[265px] flex flex-col w-full bg-slate-50 px-8 g-2">
 
@@ -22,7 +27,7 @@ const Dashboard = () => {
         <h1 className='font-semibold text-lg'>Carbon Footprint Calculator</h1>
         <h1 className='mb-4 text-primary font-bold text-xs'>For tech and blockchain companies</h1>
         <h2 className='text-sm'>Calculate your company’s carbon footprint with our beta app.</h2>
-        <Link href='/calculator' className="flex justify-center text-slate-50 bg-primary px-6 py-3 rounded-xl mt-6 mr-auto text-center transition hover:bg-primaryHover">Start Now</Link>
+        <Link href='/calculator' className="flex justify-center text-slate-50 bg-primary px-6 py-3 rounded-xl mt-6 mr-auto text-center transition hover:bg-primaryHover">{buttonText}</Link>
       </div>
 
   </div>   
