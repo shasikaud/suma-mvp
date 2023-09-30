@@ -1,6 +1,10 @@
 import User from "@/models/user";
 import connectToDB from "@/utils/database";
+import LISTS from "@/utils/lists";
 import bcrypt from "bcrypt"
+
+const businessSectors = LISTS.BUSINESS_SECTORS;
+const years = LISTS.YEARS;
 
 export const POST = async (req) => {
     console.log('POST /api/register')
@@ -18,8 +22,8 @@ export const POST = async (req) => {
             data: {
                 state: 'CREATED',
                 completedStates: [],
-                businessSector: 'Tech consultancy / development for clients',
-                calendarYear: '2022',
+                businessSector: businessSectors[0],
+                calendarYear: years[0],
                 fullTimeEmployees: 0,
                 hasOffice: 'NOT-DEFINED',
                 useCloud: 'NOT-DEFINED',

@@ -1,6 +1,7 @@
 'use client'
-import LoadingScreen from "@/components/loading/LoadingScreen";
+
+import LoadingScreenSecondary from "@/components/loading/LoadingScreenSecondary"
 
 export default function Loading() {
-    return <LoadingScreen/>
+    return <LoadingScreenSecondary/>
  }
