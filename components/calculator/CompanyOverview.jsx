@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 import LISTS from '@/utils/lists'
 import Link from 'next/link'
 
@@ -7,6 +9,8 @@ const CompanyOverview = ({ user, updateUserData }) => {
 
   const businessSectors = LISTS.BUSINESS_SECTORS;
   const yearsToMeasure = LISTS.YEARS;
+
+  const disabled = user?.data?.fullTimeEmployees < 1
 
   return (
     <div className="ml-[265px] px-8 h-full bg-backgroundColor">
@@ -71,7 +75,8 @@ const CompanyOverview = ({ user, updateUserData }) => {
 
       <div className="flex flex-row justify-end my-10">
         <button 
-          className="bg-primary text-white rounded-xl px-4 py-2" 
+          disabled={disabled}
+          className={`${disabled ? 'bg-secondary' : 'bg-primary'} text-white rounded-xl px-4 py-2`} 
           onClick={e => {updateUserData('state', 'OFFICES', 'COMPANY_OVERVIEW', true)}}
         >
           Continue

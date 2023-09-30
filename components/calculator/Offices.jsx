@@ -1,33 +1,34 @@
 'use client'
 
+import LISTS from "@/utils/lists";
 import { useState, useEffect } from "react";
-import COUNTRIES from "@/utils/lists";
 
 const Offices = ({ user, updateUserData }) => {
 
-    const countries = COUNTRIES.countries;
-    const heatingSources = [
-        'Electricity',
-        'Natural gas',
-        'Domestic fuel oil',
-        'Biogas',
-        'Green electricity (solar, wind, hydro)',
-        'Heating network',  
-    ]
+    const countries = LISTS.COUNTRIES;
+    const heatingSources = LISTS.HEATING_SOURCES;
 
-    const [offices, setOffices] = useState([])
-    const [office, setOffice] = useState({
+    const initialOfficeState = {
         name: '',
-        officeLocation: '',
+        officeLocation: countries[0],
         employeeCount: 0,
         squareMeters: 0,
         energyConsumptionYearly: 0,
-        heatingSource: '',
-    })
+        heatingSource: heatingSources[0],
+    }
+
+    const [offices, setOffices] = useState([])
+    const [office, setOffice] = useState(initialOfficeState)
 
     const hasOffice = user?.data?.hasOffice;
     const btnColorYes = (hasOffice === 'NOT-DEFINED') ? '' : (hasOffice === 'YES') ? 'bg-primary text-black border-black' : 'bg-white border-gray-200 text-gray-200'
     const btnColorNo = (hasOffice === 'NOT-DEFINED') ? '' : (hasOffice === 'YES') ? 'bg-white border-gray-200 text-gray-200' : 'bg-primary text-black border-black'
+
+    const disabled = hasOffice === 'NOT-DEFINED' || (hasOffice === 'YES' && offices.length === 0)
+    const enableAddOffice = office.name !== '' 
+                            && office.employeeCount > 0 
+                            && office.energyConsumptionYearly > 0
+                            && office.squareMeters > 0
 
     useEffect(() => {
         const addedOffices = user?.data?.offices;
@@ -37,14 +38,7 @@ const Offices = ({ user, updateUserData }) => {
     const addOffice = (e) => {
         e.preventDefault();
         offices.push(office);
-        setOffice({
-            name: '',
-            officeLocation: '',
-            employeeCount: 0,
-            squareMeters: 0,
-            energyConsumptionYearly: 0,
-            heatingSource: '',
-        })
+        setOffice(initialOfficeState)
         updateUserData('offices', offices);
     }
 
@@ -112,6 +106,7 @@ const Offices = ({ user, updateUserData }) => {
                         <label>How many employees office occupies?</label>
                         <input className="border-gray-200 rounded-md border-2 p-2"
                             type="number" 
+                            min="0"
                             name="employeeCount" 
                             value={office.employeeCount}
                             onChange={(e) => {updateOffice(e.target.name, Number(e.target.value))}
@@ -120,6 +115,7 @@ const Offices = ({ user, updateUserData }) => {
                         <label>Square meters (m2)</label>
                         <input className="border-gray-200 rounded-md border-2 p-2"
                             type="number" 
+                            min="0"
                             name="squareMeters" 
                             value={office.squareMeters}
                             onChange={(e) => {updateOffice(e.target.name, Number(e.target.value))}
@@ -128,6 +124,7 @@ const Offices = ({ user, updateUserData }) => {
                         <label>Energy consumption yearly kWh</label>
                         <input className="border-gray-200 rounded-md border-2 p-2"
                             type="number" 
+                            min="0"
                             name="energyConsumptionYearly" 
                             value={office.energyConsumptionYearly}
                             onChange={(e) => {updateOffice(e.target.name, Number(e.target.value))}
@@ -145,21 +142,32 @@ const Offices = ({ user, updateUserData }) => {
                             }
                         </select>
 
-                        <button onClick={addOffice} className="border-2 rounded-full bg-white px-6 py-2 font-medium text-sm">Add New Office</button>
+                        <button 
+                            disabled={!enableAddOffice}
+                            onClick={addOffice} 
+                            className={`${!enableAddOffice ? 'bg-secondary' : 'bg-primary'} text-white rounded-xl px-4 py-2`} 
+                        >
+                            Add New Office
+                        </button>
+
                     </form>
                 </div>
 
                 <div className="flex flex-col gap-2 m-2 p-2 bg-secondary">
+                    <h1>Offices</h1>
                     {offices.map((office, index) => {
                         return (
-                            <div className="bg-purple-300" key={index} name={office.name}>
+                            <div className="bg-white p-2" key={index} name={office.name}>
                                 <p>{office.name}</p>
                                 <p>{office.officeLocation}</p>
                                 <p>{office.employeeCount}</p>
                                 <p>{office.squareMeters}</p>
                                 <p>{office.energyConsumptionYearly}</p>
                                 <p>{office.heatingSource}</p>
-                                <button onClick={()=> {deleteOffice(office.name)}}>Remove</button>
+                                <button 
+                                    className="bg-red-100"
+                                    onClick={()=> {deleteOffice(office.name)}}>Remove
+                                </button>
                             </div>
                         )
                     })}
@@ -168,7 +176,12 @@ const Offices = ({ user, updateUserData }) => {
             : <></>
             }
             <div className="flex flex-row">
-                <button className="justify-end text-white rounded-full px-4 py-2 bg-primary mt-10" onClick={e => {updateUserData('state', 'IT', 'OFFICES', true)}}>Continue</button>
+                <button 
+                    disabled={disabled}
+                    className={`${disabled ? 'bg-secondary' : 'bg-primary'} text-white rounded-xl px-4 py-2`} 
+                    onClick={e => {updateUserData('state', 'IT', 'OFFICES', true)}}>
+                Continue
+                </button>
             </div>
         </div>
     )

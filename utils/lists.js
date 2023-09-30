@@ -25,6 +25,14 @@ const LISTS = {
         '2020', 
         '2019', 
         '2018'
+    ],
+    HEATING_SOURCES: [
+        'Electricity',
+        'Natural gas',
+        'Domestic fuel oil',
+        'Biogas',
+        'Green electricity (solar, wind, hydro)',
+        'Heating network',  
     ] 
 }
 
