@@ -5,7 +5,7 @@ const Commuting = ({ user, updateUserData }) => {
     <div className="ml-[265px] px-8 h-full bg-backgroundColor">
 
         <div className="flex flex-col">
-            <h1 className="text-2xl mb-10">Employee Commuting</h1>
+            <h1 className="text-2xl pt-10 pb-8">Employee Commuting</h1>
 
             <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 mb-4">
                 <h1>What percentage of your employees work from home (approximately) </h1>

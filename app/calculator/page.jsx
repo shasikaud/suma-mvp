@@ -64,8 +64,8 @@ const Calculator = () => {
   return (
     <div className='flex flex-col w-full'>
 
-      <div className='bg-slate-50 text-xl p-2'>
-        Carbon Footprint Calculator
+      <div className='bg-white py-4 pl-8 ml-[265px]'>
+        <p className='text-semibold '>Carbon Footprint Calculator</p>
       </div>
 
       <div className="flex flex-row w-full h-screen">

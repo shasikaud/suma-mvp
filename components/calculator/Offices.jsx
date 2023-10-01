@@ -42,7 +42,7 @@ const Offices = ({ user, updateUserData }) => {
 
     return (
         <div className={`flex flex-col ml-[265px] h-full px-8 bg-backgroundColor`}>
-            <h1 className="text-2xl ">Offices</h1>
+            <h1 className="text-2xl mb-4 pt-10 pb-4">Offices</h1>
             <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 mt-10 mb-4">
                 <h3 className="font-semibold">Do you have an office?</h3>
                 <div className="flex flex-row gap-4">
@@ -89,8 +89,9 @@ const Offices = ({ user, updateUserData }) => {
                             value={office.employeeCount}
                             onChange={(e) => {updateOffice(e.target.name, e.target.value)}
                         }/>
-
-                        <button onClick={addOffice} className="border-2 rounded-full bg-white px-6 py-2 font-medium text-sm">Add New Office</button>
+                        <div className="flex flex-row ">
+                            <button onClick={addOffice} className="border-2 rounded-full bg-white px-6 py-2 font-medium text-sm mt-4 justify-end mr-auto">Add New Office</button>
+                        </div>
                     </form>
                 </div>
 
@@ -109,7 +110,7 @@ const Offices = ({ user, updateUserData }) => {
             : <></>
             }
             <div className="flex flex-row">
-                <button className="justify-end text-white rounded-full px-4 py-2 bg-primary mt-10" onClick={e => {updateUserData('state', 'IT', 'OFFICES', true)}}>Continue</button>
+                <button className="justify-end mr-auto text-white rounded-xl px-4 py-2 bg-primary mt-10" onClick={e => {updateUserData('state', 'IT', 'OFFICES', true)}}>Continue</button>
             </div>
         </div>
     )

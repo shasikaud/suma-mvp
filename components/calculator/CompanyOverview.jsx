@@ -2,33 +2,31 @@
 
 const CompanyOverview = ({ user, updateUserData }) => {
 
-  // ADD HERE THE FOLLOWING BUSINESS SECTORS:
-    // 'Fintech',
-    // 'Blockchain & Cryptocurrency',
-    // 'Saas (Software-as-a-Service',
-    // 'AI & ML',
-    // 'HealthTech',
-    // 'EduTech',
-    // 'E-commerce',
-    // 'Gaming',
-    // 'CleanTech & Energy',
-    // 'Cybersecurity',
-    // 'Cloud Computing & IT Infrastructure',
-    // 'Media & Entertainment Tech'
-
 
   const businessSectors = [
-    'Tech consultancy / development for clients',
-    'Software-as-a-service',
-    'Cloud services',
-    'Blockchain network'
+    'Fintech',
+    'Blockchain & Cryptocurrency',
+    'Saas (Software-as-a-Service',
+    'AI & ML',
+    'HealthTech',
+    'EduTech',
+    'E-commerce',
+    'Gaming',
+    'CleanTech & Energy',
+    'Cybersecurity',
+    'Cloud Computing & IT Infrastructure',
+    'Media & Entertainment Tech'
   ] 
 
   // Add the following years to measure:
   // 2022, 2021, 2020, 2019, 2018
 
   const yearsToMeasure = [
-    '2022'
+    '2022',
+    '2021',
+    '2020',
+    '2019',
+    '2018'
   ]
 
   // const disabled = user?.data?.fullTimeEmployees;
@@ -36,7 +34,7 @@ const CompanyOverview = ({ user, updateUserData }) => {
   return (
     <div className="ml-[265px] px-8 h-full bg-backgroundColor">
 
-      <h1 className="text-2xl mb-4">Company Overview</h1>
+      <h1 className="text-2xl pt-10 pb-8">Company Overview</h1>
       <p className="mt mb-10">Measuring with carbon footprint calculator will use financial data and utilize our own calculation formulas built based on GHG Protocol standards to calculate your business’s carbon footprint. It applies region and industry-level economic data to your operations. Going through the calculation process should take less than an hour depending on what information you have available.</p>
 
       {/* CONTAINER 1 - COMPANY NAME */}
