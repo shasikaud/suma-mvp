@@ -15,6 +15,7 @@ import BusinessTravel from '@/components/calculator/BusinessTravel';
 import Electronics from '@/components/calculator/Electronics';
 import Blockchain from '@/components/calculator/Blockchain';
 import Summary from '@/components/calculator/Summary';
+import LoadingScreenSecondary from '@/components/loading/LoadingScreenSecondary';
 
 
 const Calculator = () => {
@@ -25,40 +26,39 @@ const Calculator = () => {
   if (!session || !session.user) redirect('/login')
 
   const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
   const currentState = user?.data?.state;
 
   useEffect(() => {
+    setIsLoading(true);
     const temp = async(email) => {
       const user = await getUserByEmail(email);
-      // console.log(user);
       if (user) setUser(user);
+      setIsLoading(false);
     }
     temp(session?.user?.email);
   }, []);
 
   const updateUserData = async(key, value, completedState, save) => {
-    // console.log(`Updating userData ${key} - ${value} - ${completedState} - ${save}`);
+    setIsLoading(true)
     const kv = { [key]: value };
     const data = { ...user.data, ...kv }
     const updatedUser = { ...user, data }
     if (completedState) {
-      // console.log(`completed state: ${completedState}`)
       const completedStates = updatedUser.data.completedStates;
       if (!completedStates.includes(completedState)) {
         completedStates.push(completedState);
-        // console.log(`updating completed state: ${completedStates}`)
-        // const kv = { [key]: value };
-        // const data = { ...user.data, ...kv }
-        // const updatedUser = { ...user, data }
       }
     } 
       if (save) await updateUserDataDB(updatedUser);
       setUser(updatedUser)
-      // console.log(updatedUser);
+      setIsLoading(false);
   }
 
+  if (isLoading) return <LoadingScreenSecondary/>
 
-  if (currentState === 'CREATED') return <Start updateUserData={updateUserData}/>
+  if (currentState === 'CREATED') return <Start user={user} updateUserData={updateUserData}/>
   if (currentState === 'SUMMARY') return <Summary user={user}/>
 
   return (
@@ -68,7 +68,7 @@ const Calculator = () => {
         <p className='text-semibold '>Carbon Footprint Calculator</p>
       </div>
 
-      <div className="flex flex-row w-full h-screen">
+      <div className="flex flex-row w-full h-screen mt-2">
 
         <div className='w-9/12 h-full'>
           {(currentState === 'COMPANY_OVERVIEW') ? <CompanyOverview user={user} updateUserData={updateUserData}/> : <></>}

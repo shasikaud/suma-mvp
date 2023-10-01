@@ -1,5 +1,4 @@
 const getUserByEmail = async(email) => {
-    console.log(`Get user by email: ${email}`)
     try {
         const resp = await fetch('/api/users?'+ new URLSearchParams({email:email}));
         if (resp.status !== 200) return null;
@@ -39,4 +38,18 @@ const registerUser = async(data) => {
     }
 }
 
-module.exports = { getUserByEmail, updateUserData, registerUser }
+const deleteUser = async(email) => {
+    console.log(`Delete user by email: ${email}`)
+    try {
+        const resp = await fetch('/api/users?'+ new URLSearchParams({email:email}), {
+            method: 'DELETE',
+        });
+        if (resp.status !== 200) return false;
+        return true;
+    } catch (e) {
+        console.log(e);
+        return false;
+    }
+}
+
+module.exports = { getUserByEmail, updateUserData, registerUser, deleteUser }

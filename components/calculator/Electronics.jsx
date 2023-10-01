@@ -1,6 +1,9 @@
 'use client'
 
 const Electronics = ({ user, updateUserData }) => {
+    
+    if (!user?.data) return <LoadingScreenSecondary/>
+
   return (
     <div className="flex flex-col h-full ml-[265px] px-8 bg-backgroundColor">
         <h1 className="text-2xl pt-10 pb-8">Electronics & Devices</h1>
@@ -9,7 +12,7 @@ const Electronics = ({ user, updateUserData }) => {
             <h3 className="font-semibold">How many laptops your company provided on 2022?</h3>
             <input className="border-gray-200 rounded-md border-2 p-2"
                 type="number"
-                placeholder="0"
+                min="0"
                 value={user?.data?.laptopCount}
                 onChange={(e) => {updateUserData('laptopCount', Number(e.target.value))}}
             >
@@ -20,7 +23,7 @@ const Electronics = ({ user, updateUserData }) => {
             <h3 className="font-semibold">How many desktop computers your company provided on 2022?</h3>
             <input className="border-gray-200 rounded-md border-2 p-2"
                 type="number"
-                placeholder="0"
+                min="0"
                 value={user?.data?.desktopCount}
                 onChange={(e) => {updateUserData('desktopCount', Number(e.target.value))}}
             >
@@ -31,7 +34,7 @@ const Electronics = ({ user, updateUserData }) => {
             <h3 className="font-semibold">How many mobile phones your company provided on 2022?</h3>
             <input className="border-gray-200 rounded-md border-2 p-2"
                 type="number"
-                placeholder="0"
+                min="0"
                 value={user?.data?.mobileCount}
                 onChange={(e) => {updateUserData('mobileCount', Number(e.target.value))}}
             >
@@ -42,7 +45,7 @@ const Electronics = ({ user, updateUserData }) => {
             <h3 className="font-semibold">How many desktop screens/TVs your company provided on 2022?</h3>
             <input className="border-gray-200 rounded-md border-2 p-2"
                 type="number"
-                placeholder="0"
+                min="0"
                 value={user?.data?.screenCount}
                 onChange={(e) => {updateUserData('screenCount', Number(e.target.value))}}
             >

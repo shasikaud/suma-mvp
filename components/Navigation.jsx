@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { signOut, useSession } from 'next-auth/react'
 import { usePathname } from 'next/navigation';
+import LoadingScreen from './loading/LoadingScreen'
 
 const NavigationBar = () => {
 
@@ -13,6 +14,8 @@ const NavigationBar = () => {
 
     const { data: session } = useSession();
     if (!session) return <></>
+
+    if (!session?.user?.data) return <LoadingScreen/>
 
     return (
         <div className='fixed top-0 left-0 z-10 flex flex-col flex-shrink-0 w-width265 h-full overflow-y-auto space-between text-grayBlue bg-white px-4 pt-4 border-r-2 text-sm'>
@@ -34,11 +37,10 @@ const NavigationBar = () => {
                 <img src='assets/calculator-icon.svg' alt='Calculator Icon' className='inline-block mr-2' />Calculator</Link>
             </div>
 
-            {/* SETTINGS ICON AND NAV LINK BELOW */}
-            {/* <div>
+            <div>
                 <Link href='/settings' className={`py-2 flex gap-3 px-4 mb-2 ${path === '/settings' ? 'bg-slate-200 rounded font-semibold' : ''}`}>
                 <img src='assets/settings-icon.svg' alt='Settings Icon' className='inline-block mr-2' />Settings</Link>
-            </div> */}
+            </div> 
 
             <button onClick={()=>signOut()} className='bg-red-100 hover:bg-red-400 mt-auto mb-8 rounded-md py-2'>Sign Out</button>
         </div>

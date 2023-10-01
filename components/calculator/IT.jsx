@@ -3,9 +3,17 @@
 
 const IT = ({ user, updateUserData }) => {
 
+  if (!user?.data) return <LoadingScreenSecondary/>
+
   const useCloud = user?.data?.useCloud;
   const btnColorYes = (useCloud === 'NOT-DEFINED') ? '' : (useCloud === 'YES') ? 'bg-primary border-white' : 'bg-white'
   const btnColorNo = (useCloud === 'NOT-DEFINED') ? '' : (useCloud === 'YES') ? 'bg-white' : 'bg-primary border-white'
+
+  const disabled = useCloud === 'NOT-DEFINED' ||
+                      (useCloud === 'YES' && 
+                        user?.data?.awsFootprint === 0 && 
+                        user?.data?.gcpFootprint === 0 &&
+                        user?.data?.azureFootprint === 0)
 
   return (
     <div className="flex flex-col bg-backgroundColor ml-[265px] px-8 h-full">
@@ -35,6 +43,7 @@ const IT = ({ user, updateUserData }) => {
             <p className="mb-4">AWS Carbon Footprint</p>
             <input className="border-gray-200 rounded-md border-2 p-2"
               type="number"
+              min="0"
               name="awsCarbonFootprint"
               placeholder="Amount in CO2"
               value={user?.data?.awsFootprint}
@@ -47,6 +56,7 @@ const IT = ({ user, updateUserData }) => {
             <p>Google Cloud carbon footprint</p>
             <input
               type="number"
+              min="0"
               name="gcpCarbonFootprint"
               placeholder="Amount in CO2"
               value={user?.data?.gcpFootprint}
@@ -59,6 +69,7 @@ const IT = ({ user, updateUserData }) => {
             <p>Azure Carbon Footprint</p>
             <input
               type="number"
+              min="0"
               name="azureCarbonFootprint"
               placeholder="Amount in CO2"
               value={user?.data?.azureFootprint}
@@ -71,7 +82,8 @@ const IT = ({ user, updateUserData }) => {
 
       <div className="flex flex-row justify-end my-10">
         <button 
-          className="bg-primary text-white rounded-xl px-4 py-2" 
+          disabled={disabled}
+          className={`${disabled ? 'bg-secondary' : 'bg-primary'} text-white rounded-xl px-4 py-2`} 
           onClick={e => {updateUserData('state', 'ELECTRONICS', 'IT', true)}}>
             Continue
         </button>

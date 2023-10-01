@@ -1,11 +1,15 @@
 import User from "@/models/user";
 import connectToDB from "@/utils/database";
+import LISTS from "@/utils/lists";
 import bcrypt from "bcrypt"
+
+const businessSectors = LISTS.BUSINESS_SECTORS;
+const years = LISTS.YEARS;
 
 export const POST = async (req) => {
     console.log('POST /api/register')
     try {
-        const { email, password, firstName, lastName, companyName } = await req.json();
+        const { email, password, firstName, lastName, companyName, registeredCountry } = await req.json();
         await connectToDB();
         const hashedPassword = await bcrypt.hash(password, 10);
         await User.create({ 
@@ -14,11 +18,12 @@ export const POST = async (req) => {
             firstName,
             lastName,
             companyName,
+            registeredCountry,
             data: {
                 state: 'CREATED',
                 completedStates: [],
-                businessSector: 'Tech consultancy / development for clients',
-                calendarYear: '2022',
+                businessSector: businessSectors[0],
+                calendarYear: years[0],
                 fullTimeEmployees: 0,
                 hasOffice: 'NOT-DEFINED',
                 useCloud: 'NOT-DEFINED',
@@ -30,7 +35,7 @@ export const POST = async (req) => {
                 desktopCount: 0,
                 mobileCount: 0,
                 screenCount: 0,
-                wfhEmployeePerct: 0,
+                wfhEmployeeCount: 0,
                 workingDaysAvg: 0,
                 walkBikeScooterPerct: 0,
                 trainPerct: 0,

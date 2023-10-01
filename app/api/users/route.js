@@ -31,3 +31,18 @@ export const POST = async (req) => {
         return new Response(`Server error.`).status(500);
     }
 }
+
+export const DELETE = async (req) => {
+    console.log(`DELETE /api/users`)
+    try {
+        const url = new URL(req.url)
+        const email = url.searchParams.get("email")
+        console.log(`DELETE /api/users >> email: ${email}`)
+        await connectToDB();
+        await User.deleteOne({ email: email });
+        return NextResponse.json({ data: null, error: null }, { status: 200 });
+    } catch (e) {
+        console.log(e);
+        return NextResponse.json({ data: null, error: 'Internal server error!' }, { status: 500 });
+    }
+}

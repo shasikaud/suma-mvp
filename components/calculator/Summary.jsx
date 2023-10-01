@@ -1,13 +1,26 @@
 'use client'
 
+import { useEffect } from "react";
+
+import calculateCarbonFootPrint from "@/utils/carbonCalculator"
+
 const Summary = ({ user }) => {
+
+  if (!user?.data) return <LoadingScreenSecondary/>
+
+  const summary = calculateCarbonFootPrint(user);
+
   return (
-    <div className='flex flex-col w-full'>
+    <div className='ml-[265px] flex flex-col w-full text-xl text-black p-4'>
 
-      <div className='bg-slate-50 font-semibold py-2 ml-[265px] pl-8'>
-        Summary
-      </div>
-
+        <h1 className='bg-white text-black'>Summary</h1>
+        <h1>Electricity consumption: {summary.electricity}</h1>
+        <h1>Cloud emissions: {summary.cloud}</h1>
+        <h1>Electronics emissions: {summary.device}</h1>
+        <h1>Commute emissions: {summary.commute}</h1>
+        <h1>Flight emissions: {summary.flight}</h1>
+        <h1>Total emissions: {summary.total/1000}</h1>
+        <h1>Year measured: {user?.data?.calendarYear}</h1>
     </div>
   )
 }

@@ -1,22 +1,36 @@
 'use client'
 
+import LISTS from "@/utils/lists";
 import { useState, useEffect } from "react";
 
 const Offices = ({ user, updateUserData }) => {
 
-    console.log('rendering OFFICES comp')
+    if (!user?.data) return <LoadingScreenSecondary/>
+
+    const countries = LISTS.COUNTRIES;
+    const heatingSources = LISTS.HEATING_SOURCES;
+
+    const initialOfficeState = {
+        name: '',
+        officeLocation: countries[0],
+        employeeCount: 0,
+        squareMeters: 0,
+        energyConsumptionYearly: 0,
+        heatingSource: heatingSources[0],
+    }
 
     const [offices, setOffices] = useState([])
-    const [office, setOffice] = useState({
-        name: '',
-        officeLocation: '',
-        employeeCount: 0
-    })
+    const [office, setOffice] = useState(initialOfficeState)
 
     const hasOffice = user?.data?.hasOffice;
-    // console.log(`hasOffice: ${hasOffice}`)
     const btnColorYes = (hasOffice === 'NOT-DEFINED') ? '' : (hasOffice === 'YES') ? 'bg-primary text-black border-black' : 'bg-white border-gray-200 text-gray-200'
     const btnColorNo = (hasOffice === 'NOT-DEFINED') ? '' : (hasOffice === 'YES') ? 'bg-white border-gray-200 text-gray-200' : 'bg-primary text-black border-black'
+
+    const disabled = hasOffice === 'NOT-DEFINED' || (hasOffice === 'YES' && offices.length === 0)
+    const enableAddOffice = office.name !== '' 
+                            && office.employeeCount > 0 
+                            && office.energyConsumptionYearly > 0
+                            && office.squareMeters > 0
 
     useEffect(() => {
         const addedOffices = user?.data?.offices;
@@ -26,11 +40,7 @@ const Offices = ({ user, updateUserData }) => {
     const addOffice = (e) => {
         e.preventDefault();
         offices.push(office);
-        setOffice({
-            name: '',
-            officeLocation: '',
-            employeeCount: 0
-        })
+        setOffice(initialOfficeState)
         updateUserData('offices', offices);
     }
 
@@ -38,6 +48,12 @@ const Offices = ({ user, updateUserData }) => {
         const data = { [name]: value }
         const updatedOffice = {...office, ...data};
         setOffice(updatedOffice);
+    }
+
+    const deleteOffice = (name) => {
+        const existingOffices = [...offices];
+        const filtered = existingOffices.filter(office => office.name !== name);
+        setOffices(filtered);
     }
 
     return (
@@ -74,34 +90,84 @@ const Offices = ({ user, updateUserData }) => {
                             onChange={(e) => {updateOffice(e.target.name, e.target.value)}
                         }/>
 
-                        <label>Office Location</label>
-                        <input className="border-gray-200 rounded-md border-2 p-2"
-                            type="text" 
-                            name="officeLocation" 
-                            value={office.officeLocation}
-                            onChange={(e) => {updateOffice(e.target.name, e.target.value)}
-                        }/>
+                        <label>Office Country</label>
+                        <select 
+                            className="border-gray-200 rounded-md border-2 p-2"
+                            name='officeLocation'
+                            onChange={(e) => {updateOffice(e.target.name, e.target.value)}}
+                        >
+                            {
+                                countries.map((country, index) => {
+                                return (<option key={index}>{country}</option>)
+                                })
+                            }
+                        </select>
 
-                        <label>Employee Count</label>
+                        <label>How many employees office occupies?</label>
                         <input className="border-gray-200 rounded-md border-2 p-2"
                             type="number" 
+                            min="0"
                             name="employeeCount" 
                             value={office.employeeCount}
-                            onChange={(e) => {updateOffice(e.target.name, e.target.value)}
+                            onChange={(e) => {updateOffice(e.target.name, Number(e.target.value))}
                         }/>
-                        <div className="flex flex-row ">
-                            <button onClick={addOffice} className="border-2 rounded-full bg-white px-6 py-2 font-medium text-sm mt-4 justify-end mr-auto">Add New Office</button>
-                        </div>
+
+                        <label>Square meters (m2)</label>
+                        <input className="border-gray-200 rounded-md border-2 p-2"
+                            type="number" 
+                            min="0"
+                            name="squareMeters" 
+                            value={office.squareMeters}
+                            onChange={(e) => {updateOffice(e.target.name, Number(e.target.value))}
+                        }/>
+
+                        <label>Energy consumption yearly kWh</label>
+                        <input className="border-gray-200 rounded-md border-2 p-2"
+                            type="number" 
+                            min="0"
+                            name="energyConsumptionYearly" 
+                            value={office.energyConsumptionYearly}
+                            onChange={(e) => {updateOffice(e.target.name, Number(e.target.value))}
+                        }/>
+
+                        <label>What is the heating source?</label>
+                        <select 
+                            name="heatingSource"
+                            onChange={e => {updateOffice(e.target.name, e.target.value)}}
+                            className="border-gray-200 rounded-md border-2 p-2">
+                            {
+                                    heatingSources.map((source, index) => {
+                                    return (<option key={index}>{source}</option>)
+                                    })
+                            }
+                        </select>
+
+                        <button 
+                            disabled={!enableAddOffice}
+                            onClick={addOffice} 
+                            className={`${!enableAddOffice ? 'bg-secondary' : 'bg-primary'} text-white rounded-xl px-4 py-2`} 
+                        >
+                            Add New Office
+                        </button>
+
                     </form>
                 </div>
 
-                <div className="flex flex-col bg-purple-200">
+                <div className="flex flex-col gap-2 m-2 p-2 bg-secondary">
+                    <h1>Offices</h1>
                     {offices.map((office, index) => {
                         return (
-                            <div className="bg-purple-300" key={index}>
+                            <div className="bg-white p-2" key={index} name={office.name}>
                                 <p>{office.name}</p>
                                 <p>{office.officeLocation}</p>
                                 <p>{office.employeeCount}</p>
+                                <p>{office.squareMeters}</p>
+                                <p>{office.energyConsumptionYearly}</p>
+                                <p>{office.heatingSource}</p>
+                                <button 
+                                    className="bg-red-100"
+                                    onClick={()=> {deleteOffice(office.name)}}>Remove
+                                </button>
                             </div>
                         )
                     })}
@@ -109,9 +175,25 @@ const Offices = ({ user, updateUserData }) => {
             </>
             : <></>
             }
-            <div className="flex flex-row">
-                <button className="justify-end mr-auto text-white rounded-xl px-4 py-2 bg-primary mt-10" onClick={e => {updateUserData('state', 'IT', 'OFFICES', true)}}>Continue</button>
+            
+            <div className="flex flex-row gap-8">
+
+                <button 
+                    className="bg-white text-primary border-2 border-primary rounded-xl px-4 py-2" 
+                    onClick={e => {updateUserData('state', 'COMPANY_OVERVIEW')}}>
+                Previous
+                </button>
+
+                <button 
+                    disabled={disabled}
+                    className={`${disabled ? 'bg-secondary' : 'bg-primary'} text-white rounded-xl px-4 py-2`} 
+                    onClick={e => {updateUserData('state', 'IT', 'OFFICES', true)}}>
+                Continue
+                </button>
+
+
             </div>
+
         </div>
     )
 }

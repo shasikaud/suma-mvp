@@ -22,6 +22,10 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    registeredCountry: {
+        type: String,
+        required: true
+    },
     data: {
         type: Object
     }
