@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 import { redirect } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
-import CompanyOverview from '@/components/calculator/companyOverview';
-import Start from '@/components/calculator/start';
+import CompanyOverview from '../../components/calculator/CompanyOverview';
+import Start from '../../components/calculator/start';
 import { getUserByEmail, getUserByUserName, updateUserData as updateUserDataDB } from '@/utils/apiCalls';
 import Offices from '@/components/calculator/offices';
 import IT from '@/components/calculator/iT';
