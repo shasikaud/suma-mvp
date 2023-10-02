@@ -5,9 +5,9 @@ import { redirect } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
 import CompanyOverview from '@/components/calculator/CompanyOverview';
-import Start from '@/components/calculator/start';
+import Start from '@/components/calculator/Start';
 import { getUserByEmail, getUserByUserName, updateUserData as updateUserDataDB } from '@/utils/apiCalls';
-import Offices from '@/components/calculator/offices';
+import Offices from '@/components/calculator/Offices';
 import IT from '@/components/calculator/IT';
 import Commuting from '@/components/calculator/Commuting';
 import NavigationCard from '@/components/calculator/utils/NavigationCard';
