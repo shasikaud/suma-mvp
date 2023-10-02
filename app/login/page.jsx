@@ -49,26 +49,38 @@ const LoginForm = () => {
     }
 
     return (
-        <div className="flex justify-center items-center w-screen bg-slate-50 text-slate-500">
+        <div className="flex justify-center items-center w-screen bg-backgroundColor text-black">
             <form onSubmit={submitForm} 
                 className="flex flex-col content-center justify-center
-                 w-60 gap-1 border-2 rounder-lg p-4 border-orange-300 rounded-lg">
+                 w-[560px] gap-1 border-2 py-10 px-8 border-gray-400 rounded-xl">
+                
+                {/* SUMA LOGO */}
+                <img src="../assets/suma-logo.svg" alt="SUMA Logo" className="mb-10 w-[100px]"/>
 
-                <input 
+                {/* Sign in to SUMA title */}
+                <h2 className="text-2xl font-semibold mb-6">Sign in to SUMA</h2>
+
+                {/* EMAIL input field */}
+                <label htmlFor="email" className="text-sm font-medium mb-1">Email</label>
+                <input
+                    id="email"
                     type='text' 
                     placeholder="Email" 
                     name="email"
                     value={formData.username}
-                    className="h-8"
+                    className="h-10 mb-4 border-gray-400 rounded-md border p-2 bg-backgroundColor"
                     onChange={e => updateForm(e.target.name, e.target.value)}
                 />
 
+                {/* Password input field */}
+                <label htmlFor="password" className="text-sm font-medium mb-1">Password</label>
                 <input 
+                    id="password"
                     type="password" 
                     placeholder="Password" 
                     name="password"
                     value={formData.password}
-                    className="h-8"
+                    className="h-10 border-gray-400 rounded-md border p-4 bg-backgroundColor"
                     onChange={e => updateForm(e.target.name, e.target.value)}
                 />
 
@@ -76,16 +88,19 @@ const LoginForm = () => {
                     type="submit" 
                     onClick={submitForm} 
                     disabled={!loginEnabled}
-                    className={`px-2 h-8 rounded-lg ${loginEnabled ? "border-green-300 bg-green-100 " 
-                    : "border-slate-50 bg-orange-200 px-2 text-slate-50 h-8"}`}
+                    className={`text-white px-2 py-3 rounded-lg mt-8 font-medium ${loginEnabled ? "bg-primary hover:bg-primaryHover cursor-pointer" 
+                    : "bg-black text-white cursor-default"}`}
                 >
-                    Login
+                    Sign in
                 </button>
 
-                <Link href='/register' 
-                    className="bg-orange-300 h-8 rounded-lg text-slate-50 text-center">
-                    Register
-                </Link>
+                <span className="mt-4 text-center">
+                    Don't have an account? 
+                    <Link href='/register' className="text-primary font-semibold ml-1 hover:underline">
+                        Sign up
+                    </Link>
+                </span>
+
 
             </form>
         </div>

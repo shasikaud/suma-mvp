@@ -59,7 +59,7 @@ const Offices = ({ user, updateUserData }) => {
     return (
         <div className={`flex flex-col ml-[265px] h-full px-8 bg-backgroundColor`}>
             <h1 className="text-2xl mb-4 pt-10 pb-4">Offices</h1>
-            <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 mt-10 mb-4">
+            <div className="flex flex-col py-4 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 mt-10 mb-4">
                 <h3 className="font-semibold">Do you have an office?</h3>
                 <div className="flex flex-row gap-4">
                     <button 
@@ -83,7 +83,7 @@ const Offices = ({ user, updateUserData }) => {
                     <h3 className="font-semibold">List your offices</h3>
                     <form className="flex flex-col">
                         <label>Name</label>
-                        <input className="border-gray-200 rounded-md border-2 p-2"
+                        <input className="border-gray-200 rounded-md border-2 p-2 mb-4"
                             type="text" 
                             name="name" 
                             value={office.name}
@@ -92,7 +92,7 @@ const Offices = ({ user, updateUserData }) => {
 
                         <label>Office Country</label>
                         <select 
-                            className="border-gray-200 rounded-md border-2 p-2"
+                            className="border-gray-200 rounded-md border-2 p-2 mb-4"
                             name='officeLocation'
                             onChange={(e) => {updateOffice(e.target.name, e.target.value)}}
                         >
@@ -104,7 +104,7 @@ const Offices = ({ user, updateUserData }) => {
                         </select>
 
                         <label>How many employees office occupies?</label>
-                        <input className="border-gray-200 rounded-md border-2 p-2"
+                        <input className="border-gray-200 rounded-md border-2 p-2 mb-4"
                             type="number" 
                             min="0"
                             name="employeeCount" 
@@ -113,7 +113,7 @@ const Offices = ({ user, updateUserData }) => {
                         }/>
 
                         <label>Square meters (m2)</label>
-                        <input className="border-gray-200 rounded-md border-2 p-2"
+                        <input className="border-gray-200 rounded-md border-2 p-2 mb-4"
                             type="number" 
                             min="0"
                             name="squareMeters" 
@@ -122,7 +122,7 @@ const Offices = ({ user, updateUserData }) => {
                         }/>
 
                         <label>Energy consumption yearly kWh</label>
-                        <input className="border-gray-200 rounded-md border-2 p-2"
+                        <input className="border-gray-200 rounded-md border-2 p-2 mb-4"
                             type="number" 
                             min="0"
                             name="energyConsumptionYearly" 
@@ -134,7 +134,7 @@ const Offices = ({ user, updateUserData }) => {
                         <select 
                             name="heatingSource"
                             onChange={e => {updateOffice(e.target.name, e.target.value)}}
-                            className="border-gray-200 rounded-md border-2 p-2">
+                            className="border-gray-200 rounded-md border-2 p-2 mb-4">
                             {
                                     heatingSources.map((source, index) => {
                                     return (<option key={index}>{source}</option>)
@@ -145,7 +145,7 @@ const Offices = ({ user, updateUserData }) => {
                         <button 
                             disabled={!enableAddOffice}
                             onClick={addOffice} 
-                            className={`${!enableAddOffice ? 'bg-secondary' : 'bg-primary'} text-white rounded-xl px-4 py-2`} 
+                            className={`${!enableAddOffice ? 'bg-secondary' : 'bg-primary'} text-white rounded-xl px-4 py-2 mt-10`} 
                         >
                             Add New Office
                         </button>
