@@ -4,17 +4,17 @@ import { useState, useEffect } from 'react';
 import { redirect } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
-import CompanyOverview from '@/components/calculator/CompanyOverview';
-import Start from '@/components/calculator/Start';
+import CompanyOverview from '@/components/calculator/companyOverview';
+import Start from '@/components/calculator/start';
 import { getUserByEmail, getUserByUserName, updateUserData as updateUserDataDB } from '@/utils/apiCalls';
-import Offices from '@/components/calculator/Offices';
-import IT from '@/components/calculator/IT';
-import Commuting from '@/components/calculator/Commuting';
-import NavigationCard from '@/components/calculator/utils/NavigationCard';
-import BusinessTravel from '@/components/calculator/BusinessTravel';
-import Electronics from '@/components/calculator/Electronics';
-import Blockchain from '@/components/calculator/Blockchain';
-import Summary from '@/components/calculator/Summary';
+import Offices from '@/components/calculator/offices';
+import IT from '@/components/calculator/iT';
+import Commuting from '@/components/calculator/commuting';
+import NavigationCard from '@/components/calculator/utils/navigationCard';
+import BusinessTravel from '@/components/calculator/businessTravel';
+import Electronics from '@/components/calculator/electronics';
+import Blockchain from '@/components/calculator/blockchain';
+import Summary from '@/components/calculator/summary';
 import LoadingScreenSecondary from '@/components/loading/LoadingScreenSecondary';
 
 
