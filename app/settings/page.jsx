@@ -6,7 +6,7 @@ import { useSession, signOut } from 'next-auth/react';
 import { Suspense } from 'react';
 
 import { deleteUser, getUserByEmail } from '@/utils/apiCalls';
-import LoadingScreenSecondary from '@/components/loading/LoadingScreenSecondary';
+import LoadingScreenSecondary from '@/components/loading/loadingScreenSecondary';
 
 const Settings = () => {
 

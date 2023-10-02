@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { signOut, useSession } from 'next-auth/react'
 import { usePathname } from 'next/navigation';
-import LoadingScreen from './loading/LoadingScreen'
+import LoadingScreen from './loading/loadingScreen'
 
 const NavigationBar = () => {
 

@@ -6,7 +6,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import LISTS from "@/utils/lists"
-import LoadingScreen from "@/components/loading/LoadingScreen"
+import LoadingScreen from "@/components/loading/loadingScreen"
 
 const RegisterForm = () => {
 

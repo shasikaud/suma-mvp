@@ -1,4 +1,4 @@
-import NavigationBar from '@/components/Navigation';
+import NavigationBar from '@/components/navigation';
 import '@/styles/global.css';
 import { AuthProvider } from '@/utils/providers';
 
