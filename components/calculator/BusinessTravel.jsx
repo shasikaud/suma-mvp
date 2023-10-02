@@ -39,6 +39,12 @@ const BusinessTravel = ({ user, updateUserData }) => {
       <div className="flex flex-row justify-end mt-10">
 
         <button 
+            className="bg-white text-primary border-2 border-primary rounded-xl px-4 py-2" 
+            onClick={e => {updateUserData('state', 'COMMUTING')}}>
+          Previous
+        </button>
+
+        <button 
           className="bg-primary text-slate-50 rounded-lg px-4 py-2" 
           onClick={e => {updateUserData('state', 'BLOCKCHAIN', 'BUSINESS_TRAVEL', true)}}>
           Continue

@@ -18,7 +18,19 @@ const Blockchain = ({ user, updateUserData }) => {
         Continue
         </button>
       </div>
-          <button className="justify-end text-white rounded-full px-4 py-2 bg-primary mt-10" onClick={e => {updateUserData('state', 'SUMMARY', 'BLOCKCHAIN', true)}}>Finish Calculation</button>
+
+      <button 
+        className="bg-white text-primary border-2 border-primary rounded-xl px-4 py-2" 
+        onClick={e => {updateUserData('state', 'BUSINESS_TRAVEL')}}>
+        Previous
+      </button>
+
+      <button 
+        className="justify-end text-white rounded-full px-4 py-2 bg-primary mt-10" 
+        onClick={e => {updateUserData('state', 'SUMMARY', 'BLOCKCHAIN', true)}}>
+          Finish Calculation
+      </button>
+      
     </div>
   )
 }

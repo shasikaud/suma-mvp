@@ -155,11 +155,19 @@ const Commuting = ({ user, updateUserData }) => {
         </div>
 
         <div className="flex flex-row justify-end my-10">
-        <button 
-            className="bg-primary text-white rounded-xl px-4 py-2 mb-20" 
-            onClick={e => {updateUserData('state', 'BUSINESS_TRAVEL', 'COMMUTING', true)}}>
-            Continue
-        </button>
+
+            <button 
+                className="bg-white text-primary border-2 border-primary rounded-xl px-4 py-2" 
+                onClick={e => {updateUserData('state', 'ELECTRONICS')}}>
+                Previous
+            </button>
+
+            <button 
+                className="bg-primary text-white rounded-xl px-4 py-2 mb-20" 
+                onClick={e => {updateUserData('state', 'BUSINESS_TRAVEL', 'COMMUTING', true)}}>
+                Continue
+            </button>
+
         </div>
 
     </div>
