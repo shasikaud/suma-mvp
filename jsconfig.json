@@ -1,8 +1,8 @@
-// jsconfig.json
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
+      "@/components/*": ["components/*"]
     }
   }
 }
