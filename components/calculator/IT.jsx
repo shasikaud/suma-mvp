@@ -81,12 +81,20 @@ const IT = ({ user, updateUserData }) => {
        : <></>}
 
       <div className="flex flex-row justify-end my-10">
+
+        <button 
+          className="bg-white text-primary border-2 border-primary rounded-xl px-4 py-2" 
+          onClick={e => {updateUserData('state', 'OFFICES')}}>
+          Previous
+        </button>
+
         <button 
           disabled={disabled}
           className={`${disabled ? 'bg-secondary' : 'bg-primary'} text-white rounded-xl px-4 py-2`} 
           onClick={e => {updateUserData('state', 'ELECTRONICS', 'IT', true)}}>
             Continue
         </button>
+
       </div>
 
     </div>

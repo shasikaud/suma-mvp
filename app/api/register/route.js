@@ -20,6 +20,7 @@ export const POST = async (req) => {
             companyName,
             registeredCountry,
             data: {
+                version: 0.1,
                 state: 'CREATED',
                 completedStates: [],
                 businessSector: businessSectors[0],
