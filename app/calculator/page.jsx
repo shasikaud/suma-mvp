@@ -7,7 +7,7 @@ import { useSession } from 'next-auth/react';
 import CompanyOverview from '../../components/calculator/CompanyOverview';
 import Start from '@/components/calculator/start';
 import { getUserByEmail, updateUserData as updateUserDataDB } from '@/utils/apiCalls';
-import Offices from '@/components/calculator/offices';
+import Offices from '../../components/calculator/offices';
 import IT from '@/components/calculator/iT';
 import Commuting from '@/components/calculator/commuting';
 import NavigationCard from '@/components/calculator/utils/navigationCard';
