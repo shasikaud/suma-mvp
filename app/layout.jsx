@@ -1,6 +1,6 @@
-import NavigationBar from '../components/Navigation';
-import '../styles/global.css';
-import { AuthProvider } from '../utils/providers';
+import NavigationBar from '@/components/Navigation';
+import '@/styles/global.css';
+import { AuthProvider } from '@/utils/providers';
 
 export const metadata = {
   title: 'SUMA MVP V0.1',

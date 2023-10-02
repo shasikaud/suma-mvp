@@ -5,17 +5,17 @@ import { redirect } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
 import CompanyOverview from '../../components/calculator/CompanyOverview';
-import Start from '../../components/calculator/start';
-import { getUserByEmail, getUserByUserName, updateUserData as updateUserDataDB } from '../../utils/apiCalls';
-import Offices from '../../components/calculator/offices';
-import IT from '../../components/calculator/iT';
-import Commuting from '../../components/calculator/commuting';
-import NavigationCard from '../../components/calculator/utils/navigationCard';
-import BusinessTravel from '../../components/calculator/businessTravel';
-import Electronics from '../../components/calculator/electronics';
-import Blockchain from '../../components/calculator/blockchain';
-import Summary from '../../components/calculator/summary';
-import LoadingScreenSecondary from '../../components/loading/LoadingScreenSecondary';
+import Start from '@/components/calculator/start';
+import { getUserByEmail, updateUserData as updateUserDataDB } from '@/utils/apiCalls';
+import Offices from '@/components/calculator/offices';
+import IT from '@/components/calculator/iT';
+import Commuting from '@/components/calculator/commuting';
+import NavigationCard from '@/components/calculator/utils/navigationCard';
+import BusinessTravel from '@/components/calculator/businessTravel';
+import Electronics from '@/components/calculator/electronics';
+import Blockchain from '@/components/calculator/blockchain';
+import Summary from '@/components/calculator/summary';
+import LoadingScreenSecondary from '@/components/loading/LoadingScreenSecondary';
 
 
 const Calculator = () => {
