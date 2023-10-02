@@ -7,7 +7,6 @@
       "@/utils/*": ["utils/*"],
       "@/styles/*": ["styles/*"],
       "@/public/*": ["public/*"]
-      // Add any custom aliases you need here
     }
   }
 }
