@@ -17,8 +17,8 @@ const IT = ({ user, updateUserData }) => {
 
   return (
     <div className="flex flex-col bg-backgroundColor ml-[265px] px-8 h-full">
-      <h1 className="text-2xl mb-10">Cloud Services</h1>
-      <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 mb-4">
+      <h1 className="text-2xl pt-10 pb-8">Cloud Services</h1>
+      <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border border-gray-200 mb-4">
         <h3 className="font-semibold">Do you use cloud services such as AWS, Google Cloud or Microsoft Azure</h3>
         <div className="flex flex-row">
           <button className={`rounded-full px-4 py-2 text-sm m-2 border-2 font-semibold border-gray-200 transition ${btnColorYes}`} 

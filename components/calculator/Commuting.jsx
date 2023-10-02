@@ -41,9 +41,9 @@ const Commuting = ({ user, updateUserData }) => {
         <div className="ml-[265px] px-8 h-full bg-backgroundColor">
 
         <div className="flex flex-col">
-            <h1 className="text-2xl">Employee Commuting: {maxOffice.name}</h1>
+            <h1 className="text-2xl mb-10">Employee Commuting</h1>
             <h1 className="text-xs  mb-5">Office with the highest number of employees will be considered.</h1>
-
+            
             <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 mb-4">
                 <h1>How many employees work from home?</h1>
                 <input className="border-gray-200 rounded-md border-2 p-2"

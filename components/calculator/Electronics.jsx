@@ -6,7 +6,7 @@ const Electronics = ({ user, updateUserData }) => {
 
   return (
     <div className="flex flex-col h-full ml-[265px] px-8 bg-backgroundColor">
-        <h1 className="text-2xl mb-10">Electronics & Devices</h1>
+        <h1 className="text-2xl pt-10 pb-8">Electronics & Devices</h1>
         
         <div className="flex flex-col py-8 justify-center bg-white px-10 gap-2 rounded-xl border-2 border-gray-200 mb-4">
             <h3 className="font-semibold">How many laptops your company provided on 2022?</h3>

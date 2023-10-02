@@ -17,7 +17,7 @@ const CompanyOverview = ({ user, updateUserData }) => {
   return (
     <div className="ml-[265px] px-8 h-full bg-backgroundColor">
 
-      <h1 className="text-2xl mb-4">Company Overview</h1>
+      <h1 className="text-2xl pt-10 pb-8">Company Overview</h1>
       <p className="mt mb-10">Measuring with carbon footprint calculator will use financial data and utilize our own calculation formulas built based on GHG Protocol standards to calculate your business’s carbon footprint. It applies region and industry-level economic data to your operations. Going through the calculation process should take less than an hour depending on what information you have available.</p>
 
       {/* CONTAINER 1 - COMPANY NAME */}
